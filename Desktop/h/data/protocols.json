@@ -1,0 +1,131 @@
+[
+  {
+    "id": "ai-infrastructure",
+    "name": "AI Infrastructure Protocol",
+    "description": "Automatically allocates capital across leading AI infrastructure companies with monthly rebalancing based on market performance and growth metrics.",
+    "architect": "Alex Chen",
+    "architectId": "alex-chen",
+    "assets": [
+      { "symbol": "NVDA", "name": "NVIDIA", "allocation": 40, "type": "stock" },
+      { "symbol": "AMD", "name": "Advanced Micro Devices", "allocation": 30, "type": "stock" },
+      { "symbol": "TSM", "name": "Taiwan Semiconductor", "allocation": 30, "type": "stock" }
+    ],
+    "rebalanceFrequency": "Monthly",
+    "riskLevel": "Medium",
+    "totalCapital": 2450000,
+    "participants": 127,
+    "performance": {
+      "ytd": 34.5,
+      "monthly": 8.2,
+      "weekly": 2.1
+    },
+    "managementFee": 0.5,
+    "logic": "Equal-weight allocation with momentum-based adjustments. Rebalances on the first trading day of each month.",
+    "createdAt": "2024-01-15",
+    "category": "Equities"
+  },
+  {
+    "id": "crypto-momentum",
+    "name": "Crypto Momentum Protocol",
+    "description": "Rotates capital into top-performing cryptocurrencies every week based on momentum indicators and volume analysis.",
+    "architect": "Sarah Martinez",
+    "architectId": "sarah-martinez",
+    "assets": [
+      { "symbol": "BTC", "name": "Bitcoin", "allocation": 35, "type": "crypto" },
+      { "symbol": "ETH", "name": "Ethereum", "allocation": 25, "type": "crypto" },
+      { "symbol": "SOL", "name": "Solana", "allocation": 20, "type": "crypto" },
+      { "symbol": "AVAX", "name": "Avalanche", "allocation": 20, "type": "crypto" }
+    ],
+    "rebalanceFrequency": "Weekly",
+    "riskLevel": "High",
+    "totalCapital": 1890000,
+    "participants": 89,
+    "performance": {
+      "ytd": 67.3,
+      "monthly": 12.4,
+      "weekly": 3.8
+    },
+    "managementFee": 1.0,
+    "logic": "Top 4 tokens by 7-day momentum score. Rebalances every Monday at market open.",
+    "createdAt": "2024-02-01",
+    "category": "Cryptocurrency"
+  },
+  {
+    "id": "prediction-markets",
+    "name": "Prediction Market Protocol",
+    "description": "Diversifies across correlated Polymarket events with dynamic allocation based on market efficiency and correlation patterns.",
+    "architect": "Jordan Kim",
+    "architectId": "jordan-kim",
+    "assets": [
+      { "symbol": "ELECTION-2024", "name": "2024 Election Markets", "allocation": 40, "type": "prediction" },
+      { "symbol": "FED-RATE", "name": "Fed Rate Decisions", "allocation": 30, "type": "prediction" },
+      { "symbol": "CRYPTO-REG", "name": "Crypto Regulation", "allocation": 30, "type": "prediction" }
+    ],
+    "rebalanceFrequency": "Bi-weekly",
+    "riskLevel": "Medium",
+    "totalCapital": 920000,
+    "participants": 156,
+    "performance": {
+      "ytd": 18.7,
+      "monthly": 4.3,
+      "weekly": 1.2
+    },
+    "managementFee": 0.75,
+    "logic": "Correlation-weighted allocation across event categories. Rebalances every other Friday.",
+    "createdAt": "2024-01-20",
+    "category": "Prediction Markets"
+  },
+  {
+    "id": "defi-yield",
+    "name": "DeFi Yield Protocol",
+    "description": "Automatically rotates between highest-yielding DeFi protocols while maintaining risk constraints and liquidity requirements.",
+    "architect": "Morgan Lee",
+    "architectId": "morgan-lee",
+    "assets": [
+      { "symbol": "AAVE", "name": "Aave Lending", "allocation": 30, "type": "defi" },
+      { "symbol": "COMP", "name": "Compound", "allocation": 25, "type": "defi" },
+      { "symbol": "UNI-LP", "name": "Uniswap V3 LP", "allocation": 25, "type": "defi" },
+      { "symbol": "CRV", "name": "Curve Pools", "allocation": 20, "type": "defi" }
+    ],
+    "rebalanceFrequency": "Weekly",
+    "riskLevel": "High",
+    "totalCapital": 1340000,
+    "participants": 73,
+    "performance": {
+      "ytd": 42.1,
+      "monthly": 9.8,
+      "weekly": 2.5
+    },
+    "managementFee": 1.2,
+    "logic": "Yield-optimized allocation with 30% max single position. Rebalances weekly based on APY rankings.",
+    "createdAt": "2024-02-10",
+    "category": "DeFi"
+  },
+  {
+    "id": "tech-momentum",
+    "name": "Tech Momentum Protocol",
+    "description": "Tracks momentum across major tech stocks with weekly rebalancing and volatility-based position sizing.",
+    "architect": "Alex Chen",
+    "architectId": "alex-chen",
+    "assets": [
+      { "symbol": "AAPL", "name": "Apple", "allocation": 20, "type": "stock" },
+      { "symbol": "MSFT", "name": "Microsoft", "allocation": 20, "type": "stock" },
+      { "symbol": "GOOGL", "name": "Alphabet", "allocation": 20, "type": "stock" },
+      { "symbol": "META", "name": "Meta", "allocation": 20, "type": "stock" },
+      { "symbol": "AMZN", "name": "Amazon", "allocation": 20, "type": "stock" }
+    ],
+    "rebalanceFrequency": "Weekly",
+    "riskLevel": "Medium",
+    "totalCapital": 3120000,
+    "participants": 201,
+    "performance": {
+      "ytd": 28.4,
+      "monthly": 6.7,
+      "weekly": 1.8
+    },
+    "managementFee": 0.4,
+    "logic": "Equal-weight FAANG with momentum filters. Rebalances every Monday.",
+    "createdAt": "2024-01-05",
+    "category": "Equities"
+  }
+]

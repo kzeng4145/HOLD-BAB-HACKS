@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create your first protocol - HOLD</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="onboarding-page">
+    <nav class="navbar landing-navbar">
+        <div class="container">
+            <div class="logo landing-logo">HOLD</div>
+            <ul class="nav-links landing-nav-links">
+                <li><a href="/explore">Trending ETFs</a></li>
+                <li><a href="/portfolio">My Portfolio</a></li>
+                <li><a href="/dashboard">Creators</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="#" class="nav-login">Log in</a>
+                <a href="#" class="btn btn-signup-nav">Sign up</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="onboarding-content">
+        <div class="container onboarding-container">
+            <a href="/onboarding-1" class="back-link">← Back</a>
+            
+            <div class="onboarding-form">
+                <h1 class="onboarding-title">Create your first protocol.</h1>
+                
+                <div class="form-section">
+                    <label class="form-question">Where does the protocol operate?</label>
+                    <div class="selection-buttons">
+                        <button type="button" class="selection-btn" data-value="stocks">Stocks</button>
+                        <button type="button" class="selection-btn" data-value="crypto">Crypto</button>
+                        <button type="button" class="selection-btn" data-value="prediction">Prediction markets</button>
+                        <button type="button" class="selection-btn selected" data-value="etfs">ETFs</button>
+                    </div>
+                </div>
+
+                <div class="form-group-onboarding">
+                    <label for="protocolName">Protocol name*</label>
+                    <input type="text" id="protocolName" name="protocolName" value="Sarah's ETFs" required>
+                </div>
+
+                <div class="form-group-onboarding">
+                    <label for="protocolDescription">Description</label>
+                    <input type="text" id="protocolDescription" name="protocolDescription" value="Sarah's ETFs">
+                </div>
+
+                <button type="button" class="btn btn-primary-onboarding" onclick="window.location.href='/onboarding-3'">Continue →</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="shared.js"></script>
+    <script>
+        document.querySelectorAll('.selection-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.selection-btn').forEach(b => b.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>

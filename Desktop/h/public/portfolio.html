@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - HOLD</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">HOLD</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/explore">Explore</a></li>
+                <li><a href="/design">Design</a></li>
+                <li><a href="/portfolio" class="active">Portfolio</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>My Portfolio</h1>
+            <p>View your capital allocations across all protocols</p>
+        </div>
+    </section>
+
+    <section class="portfolio">
+        <div class="container">
+            <div class="portfolio-summary">
+                <div class="summary-card">
+                    <h3>Total Portfolio Value</h3>
+                    <p class="summary-value" id="totalValue"></p>
+                    <p class="summary-change positive">+12.4% overall</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Active Protocols</h3>
+                    <p class="summary-value" id="activeProtocols"></p>
+                    <p class="summary-change">Protocols</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Total Allocated</h3>
+                    <p class="summary-value" id="totalAllocated"></p>
+                    <p class="summary-change">Capital deployed</p>
+                </div>
+            </div>
+
+            <div class="allocations-section">
+                <h2>Your Allocations</h2>
+                <div id="allocationsList" class="allocations-list">
+                    <!-- Allocations will be loaded here -->
+                </div>
+            </div>
+
+            <div class="empty-portfolio" id="emptyPortfolio" style="display: none;">
+                <div class="empty-state">
+                    <div class="empty-icon">📊</div>
+                    <h3>No Allocations Yet</h3>
+                    <p>Start investing by exploring protocols and allocating capital</p>
+                    <a href="/explore" class="btn btn-primary">Explore Protocols</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 HOLD. Autonomous Investment Protocols.</p>
+        </div>
+    </footer>
+
+    <script src="shared.js"></script>
+    <script>
+        function loadPortfolio() {
+            const portfolio = mockPortfolio;
+
+            if (portfolio.allocations.length === 0) {
+                document.getElementById('emptyPortfolio').style.display = 'block';
+                document.querySelector('.allocations-section').style.display = 'none';
+                return;
+            }
+
+            document.getElementById('totalValue').textContent = formatCurrency(portfolio.totalValue);
+            document.getElementById('activeProtocols').textContent = portfolio.allocations.length;
+            
+            const totalAllocated = portfolio.allocations.reduce((sum, alloc) => sum + alloc.amount, 0);
+            document.getElementById('totalAllocated').textContent = formatCurrency(totalAllocated);
+
+            const allocationsList = document.getElementById('allocationsList');
+            allocationsList.innerHTML = '';
+
+            portfolio.allocations.forEach(allocation => {
+                const card = document.createElement('div');
+                card.className = 'allocation-card';
+                card.onclick = () => window.location.href = `/protocol/${allocation.protocolId}`;
+
+                const currentValue = allocation.amount * (1 + allocation.performance / 100);
+                const gain = currentValue - allocation.amount;
+
+                card.innerHTML = `
+                    <div class="allocation-header">
+                        <div>
+                            <h3>${allocation.protocolName}</h3>
+                            <p class="allocation-amount">Allocated: ${formatCurrency(allocation.amount)}</p>
+                        </div>
+                        <div class="allocation-performance">
+                            <span class="perf-value positive">${formatPercent(allocation.performance)}</span>
+                            <span class="perf-label">YTD</span>
+                        </div>
+                    </div>
+                    <div class="allocation-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Current Value</span>
+                            <span class="detail-value">${formatCurrency(currentValue)}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Gain/Loss</span>
+                            <span class="detail-value ${gain >= 0 ? 'positive' : 'negative'}">${formatCurrency(gain)}</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Allocation %</span>
+                            <span class="detail-value">${((allocation.amount / totalAllocated) * 100).toFixed(1)}%</span>
+                        </div>
+                    </div>
+                    <div class="allocation-actions">
+                        <a href="/protocol/${allocation.protocolId}" class="btn-link">View Protocol →</a>
+                    </div>
+                `;
+
+                allocationsList.appendChild(card);
+            });
+        }
+
+        loadPortfolio();
+    </script>
+</body>
+</html>

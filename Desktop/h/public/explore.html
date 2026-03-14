@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Protocols - HOLD</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">HOLD</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/explore" class="active">Explore</a></li>
+                <li><a href="/design">Design</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Protocol Marketplace</h1>
+            <p>Browse autonomous investment protocols and find strategies that match your goals</p>
+        </div>
+    </section>
+
+    <section class="marketplace">
+        <div class="container">
+            <div class="filters">
+                <select id="categoryFilter" class="filter-select">
+                    <option value="">All Categories</option>
+                    <option value="Equities">Equities</option>
+                    <option value="Cryptocurrency">Cryptocurrency</option>
+                    <option value="Prediction Markets">Prediction Markets</option>
+                    <option value="DeFi">DeFi</option>
+                </select>
+                <select id="riskFilter" class="filter-select">
+                    <option value="">All Risk Levels</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+            </div>
+
+            <div id="protocolsGrid" class="protocols-grid">
+                <!-- Protocols will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 HOLD. Autonomous Investment Protocols.</p>
+        </div>
+    </footer>
+
+    <script src="shared.js"></script>
+    <script>
+        let allProtocols = [];
+
+        async function loadProtocols() {
+            allProtocols = await fetchProtocols();
+            renderProtocols(allProtocols);
+        }
+
+        function renderProtocols(protocols) {
+            const grid = document.getElementById('protocolsGrid');
+            grid.innerHTML = '';
+
+            if (protocols.length === 0) {
+                grid.innerHTML = '<p class="no-results">No protocols found matching your filters.</p>';
+                return;
+            }
+
+            protocols.forEach(protocol => {
+                const card = createProtocolCard(protocol);
+                grid.appendChild(card);
+            });
+        }
+
+        function createProtocolCard(protocol) {
+            const card = document.createElement('div');
+            card.className = 'protocol-card';
+            card.onclick = () => window.location.href = `/protocol/${protocol.id}`;
+
+            const riskColor = getRiskColor(protocol.riskLevel);
+            const categoryIcon = getCategoryIcon(protocol.category);
+
+            card.innerHTML = `
+                <div class="protocol-card-header">
+                    <div>
+                        <h3>${protocol.name}</h3>
+                        <p class="protocol-architect">by ${protocol.architect}</p>
+                    </div>
+                    <span class="protocol-category">${categoryIcon} ${protocol.category}</span>
+                </div>
+                <p class="protocol-description">${protocol.description}</p>
+                <div class="protocol-assets">
+                    <strong>Assets:</strong>
+                    <div class="asset-tags">
+                        ${protocol.assets.map(asset => `<span class="asset-tag">${asset.symbol}</span>`).join('')}
+                    </div>
+                </div>
+                <div class="protocol-stats">
+                    <div class="protocol-stat">
+                        <span class="stat-label">Rebalance</span>
+                        <span class="stat-value">${protocol.rebalanceFrequency}</span>
+                    </div>
+                    <div class="protocol-stat">
+                        <span class="stat-label">Risk</span>
+                        <span class="stat-value" style="color: ${riskColor}">${protocol.riskLevel}</span>
+                    </div>
+                    <div class="protocol-stat">
+                        <span class="stat-label">Capital</span>
+                        <span class="stat-value">${formatCurrency(protocol.totalCapital)}</span>
+                    </div>
+                </div>
+                <div class="protocol-performance">
+                    <div class="performance-metric">
+                        <span class="metric-label">YTD</span>
+                        <span class="metric-value positive">${formatPercent(protocol.performance.ytd)}</span>
+                    </div>
+                    <div class="performance-metric">
+                        <span class="metric-label">Monthly</span>
+                        <span class="metric-value positive">${formatPercent(protocol.performance.monthly)}</span>
+                    </div>
+                </div>
+                <div class="protocol-footer">
+                    <span class="participants">${protocol.participants} participants</span>
+                    <span class="fee">${protocol.managementFee}% fee</span>
+                </div>
+            `;
+
+            return card;
+        }
+
+        function applyFilters() {
+            const category = document.getElementById('categoryFilter').value;
+            const risk = document.getElementById('riskFilter').value;
+
+            let filtered = allProtocols;
+
+            if (category) {
+                filtered = filtered.filter(p => p.category === category);
+            }
+
+            if (risk) {
+                filtered = filtered.filter(p => p.riskLevel === risk);
+            }
+
+            renderProtocols(filtered);
+        }
+
+        document.getElementById('categoryFilter').addEventListener('change', applyFilters);
+        document.getElementById('riskFilter').addEventListener('change', applyFilters);
+
+        loadProtocols();
+    </script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Protocol - HOLD</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">HOLD</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/explore">Explore</a></li>
+                <li><a href="/design" class="active">Design</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Design Your Protocol</h1>
+            <p>Create an autonomous investment protocol and publish it to the marketplace</p>
+        </div>
+    </section>
+
+    <section class="design-protocol">
+        <div class="container">
+            <form id="protocolForm" class="protocol-form">
+                <div class="form-section">
+                    <h2>Basic Information</h2>
+                    <div class="form-group">
+                        <label for="protocolName">Protocol Name</label>
+                        <input type="text" id="protocolName" placeholder="e.g., AI Infrastructure Protocol" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="protocolDescription">Description</label>
+                        <textarea id="protocolDescription" rows="4" placeholder="Describe what your protocol does and how it works..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="protocolCategory">Category</label>
+                        <select id="protocolCategory" required>
+                            <option value="">Select a category</option>
+                            <option value="Equities">Equities</option>
+                            <option value="Cryptocurrency">Cryptocurrency</option>
+                            <option value="Prediction Markets">Prediction Markets</option>
+                            <option value="DeFi">DeFi</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Assets</h2>
+                    <div id="assetsContainer">
+                        <div class="asset-input-group">
+                            <input type="text" placeholder="Asset Symbol (e.g., NVDA)" class="asset-symbol" required>
+                            <input type="text" placeholder="Asset Name" class="asset-name" required>
+                            <select class="asset-type" required>
+                                <option value="">Type</option>
+                                <option value="stock">Stock</option>
+                                <option value="crypto">Crypto</option>
+                                <option value="defi">DeFi</option>
+                                <option value="prediction">Prediction Market</option>
+                            </select>
+                            <input type="number" placeholder="Allocation %" class="asset-allocation" min="0" max="100" step="1" required>
+                            <button type="button" class="btn-remove-asset" onclick="removeAsset(this)">×</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline" onclick="addAsset()">+ Add Asset</button>
+                    <div id="allocationWarning" class="warning" style="display: none;">Total allocation must equal 100%</div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Protocol Logic</h2>
+                    <div class="form-group">
+                        <label for="rebalanceFrequency">Rebalance Frequency</label>
+                        <select id="rebalanceFrequency" required>
+                            <option value="">Select frequency</option>
+                            <option value="Daily">Daily</option>
+                            <option value="Weekly">Weekly</option>
+                            <option value="Bi-weekly">Bi-weekly</option>
+                            <option value="Monthly">Monthly</option>
+                            <option value="Quarterly">Quarterly</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="protocolLogic">Allocation Logic</label>
+                        <textarea id="protocolLogic" rows="5" placeholder="Describe how capital is allocated and rebalanced. What rules determine position sizing? What triggers rebalancing?" required></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2>Risk & Fees</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="riskLevel">Risk Level</label>
+                            <select id="riskLevel" required>
+                                <option value="">Select risk level</option>
+                                <option value="Low">Low</option>
+                                <option value="Medium">Medium</option>
+                                <option value="High">High</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="managementFee">Management Fee (%)</label>
+                            <input type="number" id="managementFee" min="0" max="5" step="0.1" placeholder="0.5" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" onclick="previewProtocol()">Preview</button>
+                    <button type="submit" class="btn btn-primary">Publish Protocol</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 HOLD. Autonomous Investment Protocols.</p>
+        </div>
+    </footer>
+
+    <script src="shared.js"></script>
+    <script>
+        function addAsset() {
+            const container = document.getElementById('assetsContainer');
+            const assetGroup = document.createElement('div');
+            assetGroup.className = 'asset-input-group';
+            assetGroup.innerHTML = `
+                <input type="text" placeholder="Asset Symbol (e.g., NVDA)" class="asset-symbol" required>
+                <input type="text" placeholder="Asset Name" class="asset-name" required>
+                <select class="asset-type" required>
+                    <option value="">Type</option>
+                    <option value="stock">Stock</option>
+                    <option value="crypto">Crypto</option>
+                    <option value="defi">DeFi</option>
+                    <option value="prediction">Prediction Market</option>
+                </select>
+                <input type="number" placeholder="Allocation %" class="asset-allocation" min="0" max="100" step="1" required>
+                <button type="button" class="btn-remove-asset" onclick="removeAsset(this)">×</button>
+            `;
+            container.appendChild(assetGroup);
+            checkAllocation();
+        }
+
+        function removeAsset(btn) {
+            btn.parentElement.remove();
+            checkAllocation();
+        }
+
+        function checkAllocation() {
+            const allocations = Array.from(document.querySelectorAll('.asset-allocation'))
+                .map(input => parseFloat(input.value) || 0);
+            const total = allocations.reduce((sum, val) => sum + val, 0);
+            const warning = document.getElementById('allocationWarning');
+            
+            if (total !== 100 && allocations.length > 0) {
+                warning.style.display = 'block';
+                warning.textContent = `Total allocation is ${total}%. Must equal 100%`;
+            } else {
+                warning.style.display = 'none';
+            }
+        }
+
+        document.querySelectorAll('#assetsContainer').forEach(container => {
+            container.addEventListener('input', (e) => {
+                if (e.target.classList.contains('asset-allocation')) {
+                    checkAllocation();
+                }
+            });
+        });
+
+        function previewProtocol() {
+            const form = document.getElementById('protocolForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            if (!checkAllocation()) {
+                alert('Total allocation must equal 100%');
+                return;
+            }
+
+            alert('Preview functionality coming soon!');
+        }
+
+        document.getElementById('protocolForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const form = document.getElementById('protocolForm');
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+
+            const allocations = Array.from(document.querySelectorAll('.asset-allocation'))
+                .map(input => parseFloat(input.value) || 0);
+            const total = allocations.reduce((sum, val) => sum + val, 0);
+
+            if (total !== 100) {
+                alert('Total allocation must equal 100%');
+                return;
+            }
+
+            // Collect form data
+            const assets = Array.from(document.querySelectorAll('.asset-input-group')).map(group => ({
+                symbol: group.querySelector('.asset-symbol').value,
+                name: group.querySelector('.asset-name').value,
+                type: group.querySelector('.asset-type').value,
+                allocation: parseFloat(group.querySelector('.asset-allocation').value)
+            }));
+
+            const protocolData = {
+                name: document.getElementById('protocolName').value,
+                description: document.getElementById('protocolDescription').value,
+                category: document.getElementById('protocolCategory').value,
+                assets: assets,
+                rebalanceFrequency: document.getElementById('rebalanceFrequency').value,
+                logic: document.getElementById('protocolLogic').value,
+                riskLevel: document.getElementById('riskLevel').value,
+                managementFee: parseFloat(document.getElementById('managementFee').value)
+            };
+
+            alert(`Protocol "${protocolData.name}" published successfully! You can now view it in your dashboard.`);
+            window.location.href = '/dashboard';
+        });
+    </script>
+</body>
+</html>

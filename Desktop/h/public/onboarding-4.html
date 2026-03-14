@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set up your protocol - HOLD</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="onboarding-page">
+    <nav class="navbar landing-navbar">
+        <div class="container">
+            <div class="logo landing-logo">HOLD</div>
+            <ul class="nav-links landing-nav-links">
+                <li><a href="/explore">Trending ETFs</a></li>
+                <li><a href="/portfolio">My Portfolio</a></li>
+                <li><a href="/dashboard">Creators</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="#" class="nav-login">Log in</a>
+                <a href="#" class="btn btn-signup-nav">Sign up</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="onboarding-content">
+        <div class="container onboarding-container">
+            <a href="/onboarding-3" class="back-link">← Back</a>
+            
+            <div class="onboarding-form">
+                <h1 class="onboarding-title">Set up your protocol</h1>
+                
+                <div class="search-bar-container">
+                    <input type="text" class="search-input" placeholder="Search for stocks..." id="stockSearch">
+                    <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="m14 14 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+
+                <div class="allocation-logic-section">
+                    <h3 class="allocation-label">Allocation logic</h3>
+                    <div class="stock-buttons">
+                        <button type="button" class="stock-btn" data-stock="AMZN">Amazon AMZN</button>
+                        <button type="button" class="stock-btn" data-stock="NVDA">NVIDIA NVDA</button>
+                        <button type="button" class="stock-btn" data-stock="TSLA">Tesla TSLA</button>
+                        <button type="button" class="stock-btn" data-stock="MSFT">Microsoft MSFT</button>
+                    </div>
+                </div>
+
+                <div class="selected-stocks-area" id="selectedStocks">
+                    <p class="no-stocks-text">No stocks selected</p>
+                </div>
+
+                <button type="button" class="btn btn-primary-onboarding" onclick="window.location.href='/explore'">Continue →</button>
+            </div>
+        </div>
+    </section>
+
+    <script src="shared.js"></script>
+    <script>
+        const selectedStocks = [];
+        const selectedArea = document.getElementById('selectedStocks');
+
+        document.querySelectorAll('.stock-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const stock = this.dataset.stock;
+                const stockText = this.textContent;
+                
+                if (this.classList.contains('selected')) {
+                    this.classList.remove('selected');
+                    const index = selectedStocks.indexOf(stock);
+                    if (index > -1) selectedStocks.splice(index, 1);
+                } else {
+                    this.classList.add('selected');
+                    selectedStocks.push(stock);
+                }
+                
+                updateSelectedArea();
+            });
+        });
+
+        function updateSelectedArea() {
+            if (selectedStocks.length === 0) {
+                selectedArea.innerHTML = '<p class="no-stocks-text">No stocks selected</p>';
+            } else {
+                selectedArea.innerHTML = selectedStocks.map(stock => {
+                    const stockText = document.querySelector(`[data-stock="${stock}"]`).textContent;
+                    return `<button type="button" class="stock-btn selected" data-stock="${stock}">${stockText}</button>`;
+                }).join('');
+            }
+        }
+    </script>
+</body>
+</html>

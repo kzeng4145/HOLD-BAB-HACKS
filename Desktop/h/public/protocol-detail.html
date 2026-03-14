@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocol Details - HOLD</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">HOLD</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/explore">Explore</a></li>
+                <li><a href="/design">Design</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="loading" class="loading">Loading protocol details...</div>
+    <div id="protocolDetail" class="protocol-detail-page" style="display: none;">
+        <section class="protocol-hero">
+            <div class="container">
+                <a href="/explore" class="back-link">← Back to Marketplace</a>
+                <div class="protocol-header">
+                    <div>
+                        <h1 id="protocolName"></h1>
+                        <p class="protocol-architect-detail">by <a href="#" id="architectLink"></a></p>
+                    </div>
+                    <div class="protocol-actions">
+                        <button class="btn btn-primary" id="allocateBtn">Allocate Capital</button>
+                    </div>
+                </div>
+                <p class="protocol-description-detail" id="protocolDescription"></p>
+            </div>
+        </section>
+
+        <section class="protocol-content">
+            <div class="container">
+                <div class="protocol-layout">
+                    <div class="protocol-main">
+                        <div class="detail-section">
+                            <h2>Allocation Logic</h2>
+                            <div class="logic-box">
+                                <p id="protocolLogic"></p>
+                            </div>
+                        </div>
+
+                        <div class="detail-section">
+                            <h2>Underlying Assets</h2>
+                            <div class="assets-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Asset</th>
+                                            <th>Symbol</th>
+                                            <th>Type</th>
+                                            <th>Allocation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="assetsTableBody">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="detail-section">
+                            <h2>Protocol Parameters</h2>
+                            <div class="parameters-grid">
+                                <div class="parameter-card">
+                                    <span class="parameter-label">Rebalance Frequency</span>
+                                    <span class="parameter-value" id="rebalanceFreq"></span>
+                                </div>
+                                <div class="parameter-card">
+                                    <span class="parameter-label">Risk Level</span>
+                                    <span class="parameter-value" id="riskLevel"></span>
+                                </div>
+                                <div class="parameter-card">
+                                    <span class="parameter-label">Management Fee</span>
+                                    <span class="parameter-value" id="managementFee"></span>
+                                </div>
+                                <div class="parameter-card">
+                                    <span class="parameter-label">Category</span>
+                                    <span class="parameter-value" id="category"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="protocol-sidebar">
+                        <div class="stats-card">
+                            <h3>Performance</h3>
+                            <div class="performance-stats">
+                                <div class="perf-stat">
+                                    <span class="perf-label">Year to Date</span>
+                                    <span class="perf-value positive" id="ytdPerf"></span>
+                                </div>
+                                <div class="perf-stat">
+                                    <span class="perf-label">Monthly</span>
+                                    <span class="perf-value positive" id="monthlyPerf"></span>
+                                </div>
+                                <div class="perf-stat">
+                                    <span class="perf-label">Weekly</span>
+                                    <span class="perf-value positive" id="weeklyPerf"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="stats-card">
+                            <h3>Protocol Stats</h3>
+                            <div class="protocol-stats-list">
+                                <div class="stat-item">
+                                    <span class="stat-item-label">Total Capital</span>
+                                    <span class="stat-item-value" id="totalCapital"></span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-item-label">Participants</span>
+                                    <span class="stat-item-value" id="participants"></span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-item-label">Created</span>
+                                    <span class="stat-item-value" id="createdAt"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Allocation Modal -->
+    <div id="allocationModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Allocate Capital</h2>
+            <form id="allocationForm">
+                <div class="form-group">
+                    <label>Amount (USD)</label>
+                    <input type="number" id="allocationAmount" min="100" step="100" required>
+                </div>
+                <div class="form-group">
+                    <label>Protocol</label>
+                    <input type="text" id="allocationProtocol" readonly>
+                </div>
+                <button type="submit" class="btn btn-primary">Confirm Allocation</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 HOLD. Autonomous Investment Protocols.</p>
+        </div>
+    </footer>
+
+    <script src="shared.js"></script>
+    <script>
+        const protocolId = window.location.pathname.split('/').pop();
+        let currentProtocol = null;
+
+        async function loadProtocol() {
+            currentProtocol = await fetchProtocol(protocolId);
+            
+            if (!currentProtocol) {
+                document.getElementById('loading').textContent = 'Protocol not found';
+                return;
+            }
+
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('protocolDetail').style.display = 'block';
+
+            // Populate protocol data
+            document.getElementById('protocolName').textContent = currentProtocol.name;
+            document.getElementById('protocolDescription').textContent = currentProtocol.description;
+            document.getElementById('protocolLogic').textContent = currentProtocol.logic;
+            document.getElementById('architectLink').textContent = currentProtocol.architect;
+            document.getElementById('architectLink').href = `/dashboard?architect=${currentProtocol.architectId}`;
+            
+            document.getElementById('rebalanceFreq').textContent = currentProtocol.rebalanceFrequency;
+            document.getElementById('riskLevel').textContent = currentProtocol.riskLevel;
+            document.getElementById('riskLevel').style.color = getRiskColor(currentProtocol.riskLevel);
+            document.getElementById('managementFee').textContent = currentProtocol.managementFee + '%';
+            document.getElementById('category').textContent = getCategoryIcon(currentProtocol.category) + ' ' + currentProtocol.category;
+            
+            document.getElementById('ytdPerf').textContent = formatPercent(currentProtocol.performance.ytd);
+            document.getElementById('monthlyPerf').textContent = formatPercent(currentProtocol.performance.monthly);
+            document.getElementById('weeklyPerf').textContent = formatPercent(currentProtocol.performance.weekly);
+            
+            document.getElementById('totalCapital').textContent = formatCurrency(currentProtocol.totalCapital);
+            document.getElementById('participants').textContent = currentProtocol.participants;
+            document.getElementById('createdAt').textContent = new Date(currentProtocol.createdAt).toLocaleDateString();
+
+            // Populate assets table
+            const tbody = document.getElementById('assetsTableBody');
+            tbody.innerHTML = currentProtocol.assets.map(asset => `
+                <tr>
+                    <td>${asset.name}</td>
+                    <td><strong>${asset.symbol}</strong></td>
+                    <td><span class="asset-type-badge">${asset.type}</span></td>
+                    <td><strong>${asset.allocation}%</strong></td>
+                </tr>
+            `).join('');
+
+            // Set allocation form
+            document.getElementById('allocationProtocol').value = currentProtocol.name;
+        }
+
+        document.getElementById('allocateBtn').addEventListener('click', () => {
+            document.getElementById('allocationModal').style.display = 'flex';
+        });
+
+        document.querySelector('.close-modal').addEventListener('click', () => {
+            document.getElementById('allocationModal').style.display = 'none';
+        });
+
+        document.getElementById('allocationForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const amount = document.getElementById('allocationAmount').value;
+            alert(`Successfully allocated ${formatCurrency(amount)} to ${currentProtocol.name}!`);
+            document.getElementById('allocationModal').style.display = 'none';
+            document.getElementById('allocationForm').reset();
+        });
+
+        loadProtocol();
+    </script>
+</body>
+</html>

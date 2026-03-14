@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architect Dashboard - HOLD</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">HOLD</div>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/explore">Explore</a></li>
+                <li><a href="/design">Design</a></li>
+                <li><a href="/portfolio">Portfolio</a></li>
+                <li><a href="/dashboard" class="active">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="container">
+            <h1>Architect Dashboard</h1>
+            <p>Manage your protocols and track earnings</p>
+        </div>
+    </section>
+
+    <section class="dashboard">
+        <div class="container">
+            <div class="dashboard-summary">
+                <div class="summary-card large">
+                    <h3>Total Earnings</h3>
+                    <p class="summary-value" id="totalEarnings"></p>
+                    <p class="summary-change">Lifetime earnings from all protocols</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Total Capital</h3>
+                    <p class="summary-value" id="totalCapital"></p>
+                    <p class="summary-change">Under management</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Active Protocols</h3>
+                    <p class="summary-value" id="activeProtocols"></p>
+                    <p class="summary-change">Published protocols</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Total Participants</h3>
+                    <p class="summary-value" id="totalParticipants"></p>
+                    <p class="summary-change">Across all protocols</p>
+                </div>
+            </div>
+
+            <div class="dashboard-actions">
+                <a href="/design" class="btn btn-primary">+ Create New Protocol</a>
+            </div>
+
+            <div class="protocols-section">
+                <h2>Your Protocols</h2>
+                <div id="protocolsList" class="protocols-list">
+                    <!-- Protocols will be loaded here -->
+                </div>
+            </div>
+
+            <div class="empty-dashboard" id="emptyDashboard" style="display: none;">
+                <div class="empty-state">
+                    <div class="empty-icon">🏗️</div>
+                    <h3>No Protocols Yet</h3>
+                    <p>Create your first investment protocol and start earning management fees</p>
+                    <a href="/design" class="btn btn-primary">Design Protocol</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 HOLD. Autonomous Investment Protocols.</p>
+        </div>
+    </footer>
+
+    <script src="shared.js"></script>
+    <script>
+        function loadDashboard() {
+            const architect = mockArchitectData;
+
+            if (architect.protocols.length === 0) {
+                document.getElementById('emptyDashboard').style.display = 'block';
+                document.querySelector('.protocols-section').style.display = 'none';
+                return;
+            }
+
+            document.getElementById('totalEarnings').textContent = formatCurrency(architect.totalEarnings);
+            document.getElementById('totalCapital').textContent = formatCurrency(architect.totalCapital);
+            document.getElementById('activeProtocols').textContent = architect.protocols.length;
+            
+            const totalParticipants = architect.protocols.reduce((sum, p) => sum + p.participants, 0);
+            document.getElementById('totalParticipants').textContent = totalParticipants;
+
+            const protocolsList = document.getElementById('protocolsList');
+            protocolsList.innerHTML = '';
+
+            architect.protocols.forEach(protocol => {
+                const card = document.createElement('div');
+                card.className = 'dashboard-protocol-card';
+                card.onclick = () => window.location.href = `/protocol/${protocol.id}`;
+
+                card.innerHTML = `
+                    <div class="dashboard-protocol-header">
+                        <div>
+                            <h3>${protocol.name}</h3>
+                            <p class="protocol-id">ID: ${protocol.id}</p>
+                        </div>
+                        <a href="/protocol/${protocol.id}" class="btn-link">View →</a>
+                    </div>
+                    <div class="dashboard-protocol-stats">
+                        <div class="dashboard-stat">
+                            <span class="dashboard-stat-label">Total Capital</span>
+                            <span class="dashboard-stat-value">${formatCurrency(protocol.totalCapital)}</span>
+                        </div>
+                        <div class="dashboard-stat">
+                            <span class="dashboard-stat-label">Participants</span>
+                            <span class="dashboard-stat-value">${protocol.participants}</span>
+                        </div>
+                        <div class="dashboard-stat">
+                            <span class="dashboard-stat-label">Earnings</span>
+                            <span class="dashboard-stat-value earnings">${formatCurrency(protocol.earnings)}</span>
+                        </div>
+                    </div>
+                `;
+
+                protocolsList.appendChild(card);
+            });
+        }
+
+        loadDashboard();
+    </script>
+</body>
+</html>
