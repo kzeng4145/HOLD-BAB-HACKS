@@ -3,229 +3,320 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Protocol Details - HOLD</title>
+    <title>AI Infrastructure Protocol - HOLD</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <nav class="navbar">
+<body class="protocol-detail-page">
+    <nav class="navbar landing-navbar">
         <div class="container">
-            <div class="logo">HOLD</div>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/explore">Explore</a></li>
-                <li><a href="/design">Design</a></li>
-                <li><a href="/portfolio">Portfolio</a></li>
-                <li><a href="/dashboard">Dashboard</a></li>
+            <div class="logo landing-logo">HOLD</div>
+            <ul class="nav-links landing-nav-links">
+                <li><a href="/">HOLD</a></li>
+                <li><a href="/explore">Trending ETFs</a></li>
+                <li><a href="/portfolio">My Portfolio</a></li>
+                <li><a href="/dashboard">Creators</a></li>
             </ul>
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input-nav" placeholder="Search">
+                    <svg class="search-icon-nav" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="m14 14 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <a href="/design" class="btn btn-create-protocol">Create a protocol</a>
+            </div>
         </div>
     </nav>
 
-    <div id="loading" class="loading">Loading protocol details...</div>
-    <div id="protocolDetail" class="protocol-detail-page" style="display: none;">
-        <section class="protocol-hero">
-            <div class="container">
-                <a href="/explore" class="back-link">← Back to Marketplace</a>
-                <div class="protocol-header">
-                    <div>
-                        <h1 id="protocolName"></h1>
-                        <p class="protocol-architect-detail">by <a href="#" id="architectLink"></a></p>
-                    </div>
-                    <div class="protocol-actions">
-                        <button class="btn btn-primary" id="allocateBtn">Allocate Capital</button>
+    <section class="protocol-detail-main">
+        <div class="container protocol-detail-container">
+            <!-- Left Panel -->
+            <div class="protocol-detail-left">
+                <!-- Protocol Header -->
+                <div class="protocol-detail-header">
+                    <h1 class="protocol-detail-title">AI Infrastructure Protocol | @alexchen</h1>
+                </div>
+
+                <!-- Protocol Value -->
+                <div class="protocol-value-section">
+                    <div class="protocol-value-main">
+                        <h2 class="protocol-value">$38,125.08</h2>
+                        <div class="protocol-change positive">
+                            <span class="change-icon">▲</span>
+                            <span class="change-amount">$46.23 (6.26%)</span>
+                            <span class="change-label">Today</span>
+                        </div>
                     </div>
                 </div>
-                <p class="protocol-description-detail" id="protocolDescription"></p>
+
+                <!-- Performance Graph -->
+                <div class="graph-section">
+                    <div class="graph-container">
+                        <canvas id="protocolDetailChart" width="600" height="300"></canvas>
+                        <div class="graph-timestamp">MAY 3, 2025 3:29PM</div>
+                    </div>
+                    <div class="time-range-selectors">
+                        <button class="time-range-btn">LIVE</button>
+                        <button class="time-range-btn">1D</button>
+                        <button class="time-range-btn">1W</button>
+                        <button class="time-range-btn active">1M</button>
+                        <button class="time-range-btn">ALL</button>
+                    </div>
+                </div>
+
+                <!-- Protocol Info -->
+                <div class="protocol-info-section">
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">Your allocation:</span>
+                            <span class="info-value">$53.65</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Total return:</span>
+                            <span class="info-value positive">+$28.07 (+109.71%)</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Rebalancing:</span>
+                            <span class="info-value">Monthly</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Management fee:</span>
+                            <span class="info-value">0.5%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- What's in this protocol -->
+                <div class="fund-composition-section">
+                    <h3 class="section-title-small">What's in this protocol</h3>
+                    
+                    <!-- Sectors -->
+                    <div class="sectors-section">
+                        <h4 class="subsection-title">Sectors (As of March 12, 2026)</h4>
+                        <div class="sector-chart-container">
+                            <img src="https://i.imgur.com/AOPV01y.png" alt="Sector Allocation" class="sector-chart-image">
+                        </div>
+                    </div>
+
+                    <!-- Top Holdings -->
+                    <div class="holdings-section">
+                        <h4 class="subsection-title">Top 10 Holdings (37.48% of total assets)</h4>
+                        <div class="holdings-table-container">
+                            <table class="holdings-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Symbol</th>
+                                        <th>% Assets</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>NVIDIA</td>
+                                        <td>NVDA</td>
+                                        <td>7.79%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Apple</td>
+                                        <td>AAPL</td>
+                                        <td>6.61%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Microsoft</td>
+                                        <td>MSFT</td>
+                                        <td>5.23%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Amazon</td>
+                                        <td>AMZN</td>
+                                        <td>3.57%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Alphabet Class A</td>
+                                        <td>GOOGL</td>
+                                        <td>3.09%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Broadcom</td>
+                                        <td>AVGO</td>
+                                        <td>2.77%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Alphabet Class C</td>
+                                        <td>GOOG</td>
+                                        <td>2.47%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Meta Platforms</td>
+                                        <td>META</td>
+                                        <td>2.43%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Tesla</td>
+                                        <td>TSLA</td>
+                                        <td>1.95%</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Berkshire Hathaway Inc. Class B</td>
+                                        <td>BRK.B</td>
+                                        <td>1.57%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
 
-        <section class="protocol-content">
-            <div class="container">
-                <div class="protocol-layout">
-                    <div class="protocol-main">
-                        <div class="detail-section">
-                            <h2>Allocation Logic</h2>
-                            <div class="logic-box">
-                                <p id="protocolLogic"></p>
-                            </div>
-                        </div>
-
-                        <div class="detail-section">
-                            <h2>Underlying Assets</h2>
-                            <div class="assets-table">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Asset</th>
-                                            <th>Symbol</th>
-                                            <th>Type</th>
-                                            <th>Allocation</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="assetsTableBody">
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <div class="detail-section">
-                            <h2>Protocol Parameters</h2>
-                            <div class="parameters-grid">
-                                <div class="parameter-card">
-                                    <span class="parameter-label">Rebalance Frequency</span>
-                                    <span class="parameter-value" id="rebalanceFreq"></span>
-                                </div>
-                                <div class="parameter-card">
-                                    <span class="parameter-label">Risk Level</span>
-                                    <span class="parameter-value" id="riskLevel"></span>
-                                </div>
-                                <div class="parameter-card">
-                                    <span class="parameter-label">Management Fee</span>
-                                    <span class="parameter-value" id="managementFee"></span>
-                                </div>
-                                <div class="parameter-card">
-                                    <span class="parameter-label">Category</span>
-                                    <span class="parameter-value" id="category"></span>
-                                </div>
-                            </div>
-                        </div>
+            <!-- Right Panel - Allocate Widget -->
+            <div class="protocol-detail-right">
+                <div class="allocate-widget">
+                    <div class="widget-tabs">
+                        <button class="widget-tab active">Allocate</button>
+                        <button class="widget-tab">Withdraw</button>
                     </div>
-
-                    <div class="protocol-sidebar">
-                        <div class="stats-card">
-                            <h3>Performance</h3>
-                            <div class="performance-stats">
-                                <div class="perf-stat">
-                                    <span class="perf-label">Year to Date</span>
-                                    <span class="perf-value positive" id="ytdPerf"></span>
-                                </div>
-                                <div class="perf-stat">
-                                    <span class="perf-label">Monthly</span>
-                                    <span class="perf-value positive" id="monthlyPerf"></span>
-                                </div>
-                                <div class="perf-stat">
-                                    <span class="perf-label">Weekly</span>
-                                    <span class="perf-value positive" id="weeklyPerf"></span>
-                                </div>
-                            </div>
+                    <div class="widget-content">
+                        <div class="widget-field">
+                            <label class="widget-label">Amount</label>
+                            <input type="text" class="widget-input" value="$0.00" placeholder="$0.00">
                         </div>
-
-                        <div class="stats-card">
-                            <h3>Protocol Stats</h3>
-                            <div class="protocol-stats-list">
-                                <div class="stat-item">
-                                    <span class="stat-item-label">Total Capital</span>
-                                    <span class="stat-item-value" id="totalCapital"></span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-item-label">Participants</span>
-                                    <span class="stat-item-value" id="participants"></span>
-                                </div>
-                                <div class="stat-item">
-                                    <span class="stat-item-label">Created</span>
-                                    <span class="stat-item-value" id="createdAt"></span>
-                                </div>
-                            </div>
+                        <div class="widget-field">
+                            <label class="widget-label">Estimated allocation</label>
+                            <div class="widget-value">0 shares</div>
+                        </div>
+                        <button class="widget-button">Review order</button>
+                        <div class="widget-footer">
+                            <p class="widget-info">$1,731.23 capital available</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-    </div>
-
-    <!-- Allocation Modal -->
-    <div id="allocationModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <h2>Allocate Capital</h2>
-            <form id="allocationForm">
-                <div class="form-group">
-                    <label>Amount (USD)</label>
-                    <input type="number" id="allocationAmount" min="100" step="100" required>
-                </div>
-                <div class="form-group">
-                    <label>Protocol</label>
-                    <input type="text" id="allocationProtocol" readonly>
-                </div>
-                <button type="submit" class="btn btn-primary">Confirm Allocation</button>
-            </form>
         </div>
-    </div>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 HOLD. Autonomous Investment Protocols.</p>
-        </div>
-    </footer>
+    </section>
 
     <script src="shared.js"></script>
     <script>
-        const protocolId = window.location.pathname.split('/').pop();
-        let currentProtocol = null;
-
-        async function loadProtocol() {
-            currentProtocol = await fetchProtocol(protocolId);
+        // Draw protocol detail chart
+        function drawProtocolDetailChart() {
+            const canvas = document.getElementById('protocolDetailChart');
+            if (!canvas) return;
             
-            if (!currentProtocol) {
-                document.getElementById('loading').textContent = 'Protocol not found';
-                return;
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw background
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillRect(0, 0, width, height);
+            
+            const padding = { top: 20, right: 30, bottom: 30, left: 50 };
+            const chartWidth = width - padding.left - padding.right;
+            const chartHeight = height - padding.top - padding.bottom;
+            
+            // Generate data points for 1M view
+            const months = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG'];
+            const points = [];
+            let value = 20;
+            
+            for (let i = 0; i < 8; i++) {
+                const progress = i / 7;
+                value += (Math.random() * 5 + 2) + (progress * 40); // Gradual upward trend
+                value = Math.max(20, Math.min(70, value));
+                points.push(value);
             }
-
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('protocolDetail').style.display = 'block';
-
-            // Populate protocol data
-            document.getElementById('protocolName').textContent = currentProtocol.name;
-            document.getElementById('protocolDescription').textContent = currentProtocol.description;
-            document.getElementById('protocolLogic').textContent = currentProtocol.logic;
-            document.getElementById('architectLink').textContent = currentProtocol.architect;
-            document.getElementById('architectLink').href = `/dashboard?architect=${currentProtocol.architectId}`;
             
-            document.getElementById('rebalanceFreq').textContent = currentProtocol.rebalanceFrequency;
-            document.getElementById('riskLevel').textContent = currentProtocol.riskLevel;
-            document.getElementById('riskLevel').style.color = getRiskColor(currentProtocol.riskLevel);
-            document.getElementById('managementFee').textContent = currentProtocol.managementFee + '%';
-            document.getElementById('category').textContent = getCategoryIcon(currentProtocol.category) + ' ' + currentProtocol.category;
+            // Normalize points
+            const min = Math.min(...points);
+            const max = Math.max(...points);
+            const range = max - min || 1;
             
-            document.getElementById('ytdPerf').textContent = formatPercent(currentProtocol.performance.ytd);
-            document.getElementById('monthlyPerf').textContent = formatPercent(currentProtocol.performance.monthly);
-            document.getElementById('weeklyPerf').textContent = formatPercent(currentProtocol.performance.weekly);
+            const normalizedPoints = points.map((point, index) => {
+                const x = padding.left + (index / (points.length - 1)) * chartWidth;
+                const normalizedY = ((point - min) / range);
+                const y = padding.top + chartHeight - (normalizedY * chartHeight);
+                return { x, y, value: point };
+            });
             
-            document.getElementById('totalCapital').textContent = formatCurrency(currentProtocol.totalCapital);
-            document.getElementById('participants').textContent = currentProtocol.participants;
-            document.getElementById('createdAt').textContent = new Date(currentProtocol.createdAt).toLocaleDateString();
-
-            // Populate assets table
-            const tbody = document.getElementById('assetsTableBody');
-            tbody.innerHTML = currentProtocol.assets.map(asset => `
-                <tr>
-                    <td>${asset.name}</td>
-                    <td><strong>${asset.symbol}</strong></td>
-                    <td><span class="asset-type-badge">${asset.type}</span></td>
-                    <td><strong>${asset.allocation}%</strong></td>
-                </tr>
-            `).join('');
-
-            // Set allocation form
-            document.getElementById('allocationProtocol').value = currentProtocol.name;
+            // Draw grid lines
+            ctx.strokeStyle = '#2a2a2a';
+            ctx.lineWidth = 1;
+            for (let i = 0; i <= 5; i++) {
+                const y = padding.top + (i / 5) * chartHeight;
+                ctx.beginPath();
+                ctx.moveTo(padding.left, y);
+                ctx.lineTo(width - padding.right, y);
+                ctx.stroke();
+            }
+            
+            // Draw month labels
+            ctx.fillStyle = '#999999';
+            ctx.font = '12px Geist Sans, sans-serif';
+            ctx.textAlign = 'center';
+            months.forEach((month, index) => {
+                const x = padding.left + (index / (months.length - 1)) * chartWidth;
+                ctx.fillText(month, x, height - 10);
+            });
+            
+            // Draw Y-axis labels
+            ctx.textAlign = 'right';
+            for (let i = 0; i <= 5; i++) {
+                const y = padding.top + (i / 5) * chartHeight;
+                const value = min + (max - min) * (1 - i / 5);
+                ctx.fillText(Math.round(value).toString(), padding.left - 10, y + 4);
+            }
+            
+            // Draw purple line
+            ctx.strokeStyle = '#6366f1';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(normalizedPoints[0].x, normalizedPoints[0].y);
+            for (let i = 1; i < normalizedPoints.length; i++) {
+                ctx.lineTo(normalizedPoints[i].x, normalizedPoints[i].y);
+            }
+            ctx.stroke();
+            
+            // Draw current point indicator (MAY 3, 2025)
+            const currentIndex = 4; // MAY
+            const currentPoint = normalizedPoints[currentIndex];
+            ctx.strokeStyle = '#666666';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([2, 2]);
+            ctx.beginPath();
+            ctx.moveTo(currentPoint.x, padding.top);
+            ctx.lineTo(currentPoint.x, padding.top + chartHeight);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            // Draw point circle
+            ctx.fillStyle = '#6366f1';
+            ctx.beginPath();
+            ctx.arc(currentPoint.x, currentPoint.y, 4, 0, Math.PI * 2);
+            ctx.fill();
         }
-
-        document.getElementById('allocateBtn').addEventListener('click', () => {
-            document.getElementById('allocationModal').style.display = 'flex';
+        
+        // Time range button handlers
+        document.querySelectorAll('.time-range-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.time-range-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                drawProtocolDetailChart(); // Redraw with different data
+            });
         });
-
-        document.querySelector('.close-modal').addEventListener('click', () => {
-            document.getElementById('allocationModal').style.display = 'none';
+        
+        // Tab switching
+        document.querySelectorAll('.widget-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.widget-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
         });
-
-        document.getElementById('allocationForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const amount = document.getElementById('allocationAmount').value;
-            alert(`Successfully allocated ${formatCurrency(amount)} to ${currentProtocol.name}!`);
-            document.getElementById('allocationModal').style.display = 'none';
-            document.getElementById('allocationForm').reset();
-        });
-
-        loadProtocol();
+        
+        // Draw chart on load
+        drawProtocolDetailChart();
     </script>
 </body>
 </html>

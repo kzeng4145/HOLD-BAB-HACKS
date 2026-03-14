@@ -6,134 +6,421 @@
     <title>My Portfolio - HOLD</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <nav class="navbar">
+<body class="portfolio-page">
+    <nav class="navbar landing-navbar">
         <div class="container">
-            <div class="logo">HOLD</div>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/explore">Explore</a></li>
-                <li><a href="/design">Design</a></li>
-                <li><a href="/portfolio" class="active">Portfolio</a></li>
-                <li><a href="/dashboard">Dashboard</a></li>
+            <div class="logo landing-logo">HOLD</div>
+            <ul class="nav-links landing-nav-links">
+                <li><a href="/explore">Trending ETFs</a></li>
+                <li><a href="/portfolio" class="active">My Portfolio</a></li>
+                <li><a href="/dashboard">Creators</a></li>
             </ul>
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input-nav" placeholder="Search">
+                    <svg class="search-icon-nav" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="m14 14 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <a href="/design" class="btn btn-create-protocol">Create a protocol</a>
+            </div>
         </div>
     </nav>
 
-    <section class="page-header">
-        <div class="container">
-            <h1>My Portfolio</h1>
-            <p>View your capital allocations across all protocols</p>
+    <section class="portfolio-main">
+        <div class="container portfolio-container">
+            <!-- Left Panel -->
+            <div class="portfolio-left">
+                <!-- Portfolio Value -->
+                <div class="portfolio-value-section">
+                    <div class="portfolio-value-main">
+                        <h2 class="portfolio-value">$38,125.08</h2>
+                        <div class="portfolio-change positive">
+                            <span class="change-icon">▲</span>
+                            <span class="change-amount">$46.23 (6.26%)</span>
+                            <span class="change-label">Today</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Graph -->
+                <div class="graph-section">
+                    <div class="graph-container">
+                        <canvas id="portfolioChart" width="600" height="300"></canvas>
+                        <div class="graph-timestamp">MAY 3, 2025 3:29PM</div>
+                    </div>
+                    <div class="time-range-selectors">
+                        <button class="time-range-btn">LIVE</button>
+                        <button class="time-range-btn">1D</button>
+                        <button class="time-range-btn">1W</button>
+                        <button class="time-range-btn active">1M</button>
+                        <button class="time-range-btn">ALL</button>
+                    </div>
+                </div>
+
+                <!-- Updates Feed -->
+                <div class="updates-section">
+                    <h3 class="updates-title">Updates</h3>
+                    <div class="updates-list">
+                        <div class="update-item">
+                            <div class="update-avatar">
+                                <img src="https://i.imgur.com/yKn8gvL.png" alt="@TJRTrades" class="avatar-img" onerror="this.onerror=null; this.src='https://i.imgur.com/yKn8gvL.jpg';">
+                            </div>
+                            <div class="update-content">
+                                <div class="update-header">
+                                    <span class="update-author">@TJRTrades</span>
+                                    <span class="update-badge">🌸</span>
+                                </div>
+                                <p class="update-text">New ETF created -- focusing on meme coins. HIGH RISK, HIGH REWARD!!!</p>
+                            </div>
+                            <div class="update-action">
+                                <div class="update-icon">▣</div>
+                            </div>
+                        </div>
+                        <div class="update-item">
+                            <div class="update-avatar">
+                                <img src="https://i.imgur.com/yKn8gvL.png" alt="@TJRTrades" class="avatar-img" onerror="this.onerror=null; this.src='https://i.imgur.com/yKn8gvL.jpg';">
+                            </div>
+                            <div class="update-content">
+                                <div class="update-header">
+                                    <span class="update-author">@TJRTrades</span>
+                                    <span class="update-badge">🌸</span>
+                                </div>
+                                <p class="update-text">New ETF created -- focusing on meme coins. HIGH RISK, HIGH REWARD!!!</p>
+                            </div>
+                            <div class="update-action">
+                                <div class="update-icon">▣</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel -->
+            <div class="portfolio-right">
+                <!-- Earnings Section -->
+                <div class="earnings-section">
+                    <h3 class="earnings-title">Your earnings from HOLD</h3>
+                    <div class="earnings-value">$2,493.37</div>
+                    <div class="earnings-change positive">
+                        <span class="change-icon">▲</span>
+                        <span class="change-amount">$46.23 (6.26%)</span>
+                        <span class="change-label">Today</span>
+                    </div>
+                </div>
+
+                <!-- Portfolio Holdings -->
+                <div class="holdings-section">
+                    <h3 class="holdings-title">Your Portfolio</h3>
+                    <div class="holdings-list">
+                        <div class="holding-item">
+                            <div class="holding-avatar">
+                                <img src="https://i.imgur.com/yKn8gvL.png" alt="@TJRTrades" class="avatar-img" onerror="this.onerror=null; this.src='https://i.imgur.com/yKn8gvL.jpg';">
+                            </div>
+                            <div class="holding-info">
+                                <div class="holding-name-group">
+                                    <span class="holding-name">ALPHA</span>
+                                    <span class="holding-author">@TJRTrades</span>
+                                    <span class="holding-badge">🌸</span>
+                                </div>
+                                <div class="holding-value">$5,375.37</div>
+                                <div class="holding-change positive">
+                                    <span class="change-icon">▲</span>
+                                    <span class="change-amount">$46.23 (6.26%)</span>
+                                    <span class="change-label">Today</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-avatar">
+                                <img src="https://i.imgur.com/yKn8gvL.png" alt="@TJRTrades" class="avatar-img" onerror="this.onerror=null; this.src='https://i.imgur.com/yKn8gvL.jpg';">
+                            </div>
+                            <div class="holding-info">
+                                <div class="holding-name-group">
+                                    <span class="holding-name">ALPHA</span>
+                                    <span class="holding-author">@TJRTrades</span>
+                                    <span class="holding-badge">🌸</span>
+                                </div>
+                                <div class="holding-value">$5,375.37</div>
+                                <div class="holding-change positive">
+                                    <span class="change-icon">▲</span>
+                                    <span class="change-amount">$46.23 (6.26%)</span>
+                                    <span class="change-label">Today</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-avatar">
+                                <img src="https://i.imgur.com/yKn8gvL.png" alt="@TJRTrades" class="avatar-img" onerror="this.onerror=null; this.src='https://i.imgur.com/yKn8gvL.jpg';">
+                            </div>
+                            <div class="holding-info">
+                                <div class="holding-name-group">
+                                    <span class="holding-name">ALPHA</span>
+                                    <span class="holding-author">@TJRTrades</span>
+                                    <span class="holding-badge">🌸</span>
+                                </div>
+                                <div class="holding-value">$5,375.37</div>
+                                <div class="holding-change positive">
+                                    <span class="change-icon">▲</span>
+                                    <span class="change-amount">$46.23 (6.26%)</span>
+                                    <span class="change-label">Today</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-avatar">
+                                <img src="https://i.imgur.com/yKn8gvL.png" alt="@TJRTrades" class="avatar-img" onerror="this.onerror=null; this.src='https://i.imgur.com/yKn8gvL.jpg';">
+                            </div>
+                            <div class="holding-info">
+                                <div class="holding-name-group">
+                                    <span class="holding-name">ALPHA</span>
+                                    <span class="holding-author">@TJRTrades</span>
+                                    <span class="holding-badge">🌸</span>
+                                </div>
+                                <div class="holding-value">$5,375.37</div>
+                                <div class="holding-change positive">
+                                    <span class="change-icon">▲</span>
+                                    <span class="change-amount">$46.23 (6.26%)</span>
+                                    <span class="change-label">Today</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-avatar">
+                                <img src="https://i.imgur.com/yKn8gvL.png" alt="@TJRTrades" class="avatar-img" onerror="this.onerror=null; this.src='https://i.imgur.com/yKn8gvL.jpg';">
+                            </div>
+                            <div class="holding-info">
+                                <div class="holding-name-group">
+                                    <span class="holding-name">ALPHA</span>
+                                    <span class="holding-author">@TJRTrades</span>
+                                    <span class="holding-badge">🌸</span>
+                                </div>
+                                <div class="holding-value">$5,375.37</div>
+                                <div class="holding-change positive">
+                                    <span class="change-icon">▲</span>
+                                    <span class="change-amount">$46.23 (6.26%)</span>
+                                    <span class="change-label">Today</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="holding-item">
+                            <div class="holding-avatar">
+                                <img src="https://i.imgur.com/yKn8gvL.png" alt="@TJRTrades" class="avatar-img" onerror="this.onerror=null; this.src='https://i.imgur.com/yKn8gvL.jpg';">
+                            </div>
+                            <div class="holding-info">
+                                <div class="holding-name-group">
+                                    <span class="holding-name">ALPHA</span>
+                                    <span class="holding-author">@TJRTrades</span>
+                                    <span class="holding-badge">🌸</span>
+                                </div>
+                                <div class="holding-value">$5,375.37</div>
+                                <div class="holding-change positive">
+                                    <span class="change-icon">▲</span>
+                                    <span class="change-amount">$46.23 (6.26%)</span>
+                                    <span class="change-label">Today</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-
-    <section class="portfolio">
-        <div class="container">
-            <div class="portfolio-summary">
-                <div class="summary-card">
-                    <h3>Total Portfolio Value</h3>
-                    <p class="summary-value" id="totalValue"></p>
-                    <p class="summary-change positive">+12.4% overall</p>
-                </div>
-                <div class="summary-card">
-                    <h3>Active Protocols</h3>
-                    <p class="summary-value" id="activeProtocols"></p>
-                    <p class="summary-change">Protocols</p>
-                </div>
-                <div class="summary-card">
-                    <h3>Total Allocated</h3>
-                    <p class="summary-value" id="totalAllocated"></p>
-                    <p class="summary-change">Capital deployed</p>
-                </div>
-            </div>
-
-            <div class="allocations-section">
-                <h2>Your Allocations</h2>
-                <div id="allocationsList" class="allocations-list">
-                    <!-- Allocations will be loaded here -->
-                </div>
-            </div>
-
-            <div class="empty-portfolio" id="emptyPortfolio" style="display: none;">
-                <div class="empty-state">
-                    <div class="empty-icon">📊</div>
-                    <h3>No Allocations Yet</h3>
-                    <p>Start investing by exploring protocols and allocating capital</p>
-                    <a href="/explore" class="btn btn-primary">Explore Protocols</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 HOLD. Autonomous Investment Protocols.</p>
-        </div>
-    </footer>
 
     <script src="shared.js"></script>
     <script>
-        function loadPortfolio() {
-            const portfolio = mockPortfolio;
-
-            if (portfolio.allocations.length === 0) {
-                document.getElementById('emptyPortfolio').style.display = 'block';
-                document.querySelector('.allocations-section').style.display = 'none';
-                return;
+        // Chart data for different time ranges
+        const chartData = {
+            'LIVE': {
+                points: [
+                    { x: 0, y: 35 }, { x: 1, y: 36 }, { x: 2, y: 35.5 }, { x: 3, y: 37 },
+                    { x: 4, y: 36.5 }, { x: 5, y: 38 }, { x: 6, y: 37.5 }, { x: 7, y: 38.125 }
+                ],
+                labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', 'NOW'],
+                yRange: [30, 40],
+                timestamp: 'MAY 3, 2025 3:29PM',
+                markerX: 7
+            },
+            '1D': {
+                points: [
+                    { x: 0, y: 35 }, { x: 1, y: 34.5 }, { x: 2, y: 35.2 }, { x: 3, y: 36 },
+                    { x: 4, y: 35.8 }, { x: 5, y: 36.5 }, { x: 6, y: 37 }, { x: 7, y: 38.125 }
+                ],
+                labels: ['9AM', '11AM', '1PM', '3PM', '5PM', '7PM', '9PM', 'NOW'],
+                yRange: [30, 40],
+                timestamp: 'MAY 3, 2025 3:29PM',
+                markerX: 7
+            },
+            '1W': {
+                points: [
+                    { x: 0, y: 34 }, { x: 1, y: 35 }, { x: 2, y: 36 }, { x: 3, y: 35.5 },
+                    { x: 4, y: 37 }, { x: 5, y: 36.5 }, { x: 6, y: 38.125 }
+                ],
+                labels: ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'TODAY'],
+                yRange: [30, 40],
+                timestamp: 'MAY 3, 2025 3:29PM',
+                markerX: 6
+            },
+            '1M': {
+                points: [
+                    { x: 0, y: 30 }, { x: 1, y: 32 }, { x: 2, y: 35 }, { x: 3, y: 38 },
+                    { x: 4, y: 32 }, { x: 5, y: 37 }, { x: 6, y: 35 }, { x: 7, y: 38.125 }
+                ],
+                labels: ['WEEK 1', 'WEEK 2', 'WEEK 3', 'WEEK 4', 'WEEK 5', 'WEEK 6', 'WEEK 7', 'NOW'],
+                yRange: [20, 40],
+                timestamp: 'MAY 3, 2025 3:29PM',
+                markerX: 7
+            },
+            'ALL': {
+                points: [
+                    { x: 0, y: 30 }, { x: 1, y: 32 }, { x: 2, y: 35 }, { x: 3, y: 38 },
+                    { x: 4, y: 32 }, { x: 5, y: 37 }, { x: 6, y: 35 }, { x: 7, y: 31 }
+                ],
+                labels: ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG'],
+                yRange: [20, 40],
+                timestamp: 'MAY 3, 2025 3:29PM',
+                markerX: 4
             }
+        };
 
-            document.getElementById('totalValue').textContent = formatCurrency(portfolio.totalValue);
-            document.getElementById('activeProtocols').textContent = portfolio.allocations.length;
-            
-            const totalAllocated = portfolio.allocations.reduce((sum, alloc) => sum + alloc.amount, 0);
-            document.getElementById('totalAllocated').textContent = formatCurrency(totalAllocated);
-
-            const allocationsList = document.getElementById('allocationsList');
-            allocationsList.innerHTML = '';
-
-            portfolio.allocations.forEach(allocation => {
-                const card = document.createElement('div');
-                card.className = 'allocation-card';
-                card.onclick = () => window.location.href = `/protocol/${allocation.protocolId}`;
-
-                const currentValue = allocation.amount * (1 + allocation.performance / 100);
-                const gain = currentValue - allocation.amount;
-
-                card.innerHTML = `
-                    <div class="allocation-header">
-                        <div>
-                            <h3>${allocation.protocolName}</h3>
-                            <p class="allocation-amount">Allocated: ${formatCurrency(allocation.amount)}</p>
-                        </div>
-                        <div class="allocation-performance">
-                            <span class="perf-value positive">${formatPercent(allocation.performance)}</span>
-                            <span class="perf-label">YTD</span>
-                        </div>
-                    </div>
-                    <div class="allocation-details">
-                        <div class="detail-item">
-                            <span class="detail-label">Current Value</span>
-                            <span class="detail-value">${formatCurrency(currentValue)}</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Gain/Loss</span>
-                            <span class="detail-value ${gain >= 0 ? 'positive' : 'negative'}">${formatCurrency(gain)}</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Allocation %</span>
-                            <span class="detail-value">${((allocation.amount / totalAllocated) * 100).toFixed(1)}%</span>
-                        </div>
-                    </div>
-                    <div class="allocation-actions">
-                        <a href="/protocol/${allocation.protocolId}" class="btn-link">View Protocol →</a>
-                    </div>
-                `;
-
-                allocationsList.appendChild(card);
+        let currentTimeRange = '1M';
+        
+        // Set initial active button
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.time-range-btn').forEach(btn => {
+                if (btn.textContent.trim() === '1M') {
+                    btn.classList.add('active');
+                }
             });
-        }
+        });
 
-        loadPortfolio();
+        function drawChart(timeRange) {
+            const canvas = document.getElementById('portfolioChart');
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+            
+            const data = chartData[timeRange];
+            if (!data) return;
+            
+            const padding = { top: 20, right: 20, bottom: 30, left: 50 };
+            const chartWidth = width - padding.left - padding.right;
+            const chartHeight = height - padding.top - padding.bottom;
+            
+            // Normalize points to chart area
+            const normalizedPoints = data.points.map((point, index) => {
+                const x = padding.left + (point.x / (data.points.length - 1)) * chartWidth;
+                const yMin = data.yRange[0];
+                const yMax = data.yRange[1];
+                const normalizedY = ((point.y - yMin) / (yMax - yMin));
+                const y = padding.top + chartHeight - (normalizedY * chartHeight);
+                return { x, y, value: point.y };
+            });
+            
+            // Draw axes
+            ctx.strokeStyle = '#333333';
+            ctx.lineWidth = 1;
+            
+            // X-axis
+            ctx.beginPath();
+            ctx.moveTo(padding.left, height - padding.bottom);
+            ctx.lineTo(width - padding.right, height - padding.bottom);
+            ctx.stroke();
+            
+            // Y-axis
+            ctx.beginPath();
+            ctx.moveTo(padding.left, padding.top);
+            ctx.lineTo(padding.left, height - padding.bottom);
+            ctx.stroke();
+            
+            // Draw grid lines
+            ctx.strokeStyle = '#1a1a1a';
+            ctx.lineWidth = 1;
+            const gridLines = 5;
+            for (let i = 0; i <= gridLines; i++) {
+                const y = padding.top + (i * chartHeight / gridLines);
+                ctx.beginPath();
+                ctx.moveTo(padding.left, y);
+                ctx.lineTo(width - padding.right, y);
+                ctx.stroke();
+            }
+            
+            // Draw purple line (portfolio trend)
+            ctx.strokeStyle = '#6366f1';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            
+            ctx.moveTo(normalizedPoints[0].x, normalizedPoints[0].y);
+            for (let i = 1; i < normalizedPoints.length; i++) {
+                ctx.lineTo(normalizedPoints[i].x, normalizedPoints[i].y);
+            }
+            ctx.stroke();
+            
+            // Draw data points
+            ctx.fillStyle = '#6366f1';
+            normalizedPoints.forEach(point => {
+                ctx.beginPath();
+                ctx.arc(point.x, point.y, 3, 0, 2 * Math.PI);
+                ctx.fill();
+            });
+            
+            // Draw vertical line marker
+            const markerPoint = normalizedPoints[data.markerX] || normalizedPoints[normalizedPoints.length - 1];
+            ctx.strokeStyle = '#ffffff';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(markerPoint.x, padding.top);
+            ctx.lineTo(markerPoint.x, height - padding.bottom);
+            ctx.stroke();
+            
+            // Draw X-axis labels
+            ctx.fillStyle = '#999999';
+            ctx.font = '11px Geist Sans';
+            ctx.textAlign = 'center';
+            data.labels.forEach((label, i) => {
+                const x = padding.left + (i / (data.labels.length - 1)) * chartWidth;
+                ctx.fillText(label, x, height - 10);
+            });
+            
+            // Draw Y-axis labels
+            ctx.textAlign = 'right';
+            const yLabels = [];
+            for (let i = 0; i <= 5; i++) {
+                const value = data.yRange[0] + (i * (data.yRange[1] - data.yRange[0]) / 5);
+                yLabels.push(Math.round(value));
+            }
+            yLabels.forEach((label, i) => {
+                const y = padding.top + chartHeight - (i * chartHeight / 5);
+                ctx.fillText(label.toString(), padding.left - 10, y + 4);
+            });
+            
+            // Update timestamp
+            const timestampEl = document.querySelector('.graph-timestamp');
+            if (timestampEl) {
+                timestampEl.textContent = data.timestamp;
+            }
+        }
+        
+        // Time range selector
+        document.querySelectorAll('.time-range-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.time-range-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const timeRange = this.textContent.trim();
+                currentTimeRange = timeRange;
+                drawChart(timeRange);
+            });
+        });
+        
+        // Initial chart draw
+        drawChart(currentTimeRange);
     </script>
 </body>
 </html>

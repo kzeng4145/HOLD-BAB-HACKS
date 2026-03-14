@@ -29,64 +29,207 @@
             <div class="onboarding-form">
                 <h1 class="onboarding-title">Set up your protocol</h1>
                 
-                <div class="search-bar-container">
-                    <input type="text" class="search-input" placeholder="Search for stocks..." id="stockSearch">
-                    <svg class="search-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="m14 14 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                </div>
-
                 <div class="allocation-logic-section">
-                    <h3 class="allocation-label">Allocation logic</h3>
-                    <div class="stock-buttons">
-                        <button type="button" class="stock-btn" data-stock="AMZN">Amazon AMZN</button>
-                        <button type="button" class="stock-btn" data-stock="NVDA">NVIDIA NVDA</button>
-                        <button type="button" class="stock-btn" data-stock="TSLA">Tesla TSLA</button>
-                        <button type="button" class="stock-btn" data-stock="MSFT">Microsoft MSFT</button>
+                    <div class="allocation-header">
+                        <h3 class="allocation-label">Allocation logic</h3>
+                        <span class="allocation-method" id="allocationMethod">Custom</span>
+                    </div>
+                    
+                    <div class="allocation-list">
+                        <div class="allocation-item" data-category="crypto">
+                            <div class="allocation-info">
+                                <div class="allocation-name-group">
+                                    <span class="allocation-name">Crypto Basket</span>
+                                    <span class="allocation-risk-badge risk-on">Risk-on</span>
+                                </div>
+                                <span class="allocation-percent">40%</span>
+                            </div>
+                            <div class="allocation-bar-container">
+                                <div class="allocation-bar" data-percent="40" style="width: 40%">
+                                    <div class="allocation-handle"></div>
+                                </div>
+                            </div>
+                            <p class="allocation-description">BTC, ETH, and top altcoins - higher volatility, higher potential returns</p>
+                        </div>
+                        
+                        <div class="allocation-item" data-category="equities">
+                            <div class="allocation-info">
+                                <div class="allocation-name-group">
+                                    <span class="allocation-name">Equities</span>
+                                    <span class="allocation-risk-badge risk-moderate">Moderate</span>
+                                </div>
+                                <span class="allocation-percent">45%</span>
+                            </div>
+                            <div class="allocation-bar-container">
+                                <div class="allocation-bar" data-percent="45" style="width: 45%">
+                                    <div class="allocation-handle"></div>
+                                </div>
+                            </div>
+                            <p class="allocation-description">Tech stocks (AMZN, NVDA, TSLA, MSFT) and diversified equity exposure</p>
+                        </div>
+                        
+                        <div class="allocation-item" data-category="commodities">
+                            <div class="allocation-info">
+                                <div class="allocation-name-group">
+                                    <span class="allocation-name">Commodities</span>
+                                    <span class="allocation-risk-badge risk-off">Risk-off</span>
+                                </div>
+                                <span class="allocation-percent">15%</span>
+                            </div>
+                            <div class="allocation-bar-container">
+                                <div class="allocation-bar" data-percent="15" style="width: 15%">
+                                    <div class="allocation-handle"></div>
+                                </div>
+                            </div>
+                            <p class="allocation-description">Gold, oil, and other commodities - portfolio hedge and inflation protection</p>
+                        </div>
+                    </div>
+                    
+                    <div class="allocation-total">
+                        <span>Total: <strong id="totalAllocation">100%</strong></span>
                     </div>
                 </div>
 
-                <div class="selected-stocks-area" id="selectedStocks">
-                    <p class="no-stocks-text">No stocks selected</p>
+                <div class="protocol-options">
+                    <div class="protocol-card" data-strategy="momentum">
+                        <h4 class="protocol-title">Momentum weighted</h4>
+                        <p class="protocol-description">Assets with strong recent performance get more capital</p>
+                        <div class="protocol-preview">
+                            <span class="preview-label">Recommended:</span>
+                            <span class="preview-allocation">Crypto 50% | Equities 35% | Commodities 15%</span>
+                        </div>
+                    </div>
+                    <div class="protocol-card" data-strategy="risk">
+                        <h4 class="protocol-title">Risk weighted</h4>
+                        <p class="protocol-description">Safer assets get larger allocations</p>
+                        <div class="protocol-preview">
+                            <span class="preview-label">Recommended:</span>
+                            <span class="preview-allocation">Crypto 20% | Equities 50% | Commodities 30%</span>
+                        </div>
+                    </div>
+                    <div class="protocol-card selected" data-strategy="custom">
+                        <h4 class="protocol-title">Custom</h4>
+                        <p class="protocol-description">Set allocations for specific items manually</p>
+                        <div class="protocol-preview">
+                            <span class="preview-label">Current:</span>
+                            <span class="preview-allocation">Crypto 40% | Equities 45% | Commodities 15%</span>
+                        </div>
+                    </div>
+                    <div class="protocol-card" data-strategy="equal">
+                        <h4 class="protocol-title">Equally weighted</h4>
+                        <p class="protocol-description">All asset categories are distributed equally</p>
+                        <div class="protocol-preview">
+                            <span class="preview-label">Recommended:</span>
+                            <span class="preview-allocation">Crypto 33% | Equities 33% | Commodities 33%</span>
+                        </div>
+                    </div>
                 </div>
 
-                <button type="button" class="btn btn-primary-onboarding" onclick="window.location.href='/explore'">Continue →</button>
+                <button type="button" class="btn btn-primary-onboarding" onclick="window.location.href='/onboarding-5'">Continue →</button>
             </div>
         </div>
     </section>
 
-    <script src="shared.js"></script>
-    <script>
-        const selectedStocks = [];
-        const selectedArea = document.getElementById('selectedStocks');
+    <div class="onboarding-progress">
+        <div class="progress-bar">
+            <div class="progress-step completed" data-step="1">
+                <div class="progress-dot"></div>
+            </div>
+            <div class="progress-line active"></div>
+            <div class="progress-step completed" data-step="2">
+                <div class="progress-dot"></div>
+            </div>
+            <div class="progress-line active"></div>
+            <div class="progress-step completed" data-step="3">
+                <div class="progress-dot"></div>
+            </div>
+            <div class="progress-line active"></div>
+            <div class="progress-step active" data-step="4">
+                <div class="progress-dot"></div>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="5">
+                <div class="progress-dot"></div>
+            </div>
+        </div>
+    </div>
 
-        document.querySelectorAll('.stock-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const stock = this.dataset.stock;
-                const stockText = this.textContent;
-                
-                if (this.classList.contains('selected')) {
-                    this.classList.remove('selected');
-                    const index = selectedStocks.indexOf(stock);
-                    if (index > -1) selectedStocks.splice(index, 1);
-                } else {
-                    this.classList.add('selected');
-                    selectedStocks.push(stock);
+    <script src="shared.js"></script>
+    <script src="onboarding-nav.js"></script>
+    <script src="allocation-editor.js"></script>
+    <script>
+        // Strategy-specific default allocations
+        const strategyDefaults = {
+            momentum: { crypto: 50, equities: 35, commodities: 15 },
+            risk: { crypto: 20, equities: 50, commodities: 30 },
+            custom: { crypto: 40, equities: 45, commodities: 15 },
+            equal: { crypto: 33.33, equities: 33.33, commodities: 33.34 }
+        };
+
+        function applyStrategy(strategy) {
+            const defaults = strategyDefaults[strategy];
+            if (!defaults) return;
+
+            const items = document.querySelectorAll('.allocation-item');
+            items.forEach(item => {
+                const category = item.dataset.category;
+                const percent = defaults[category];
+                if (percent !== undefined) {
+                    const bar = item.querySelector('.allocation-bar');
+                    const percentElement = item.querySelector('.allocation-percent');
+                    if (bar && percentElement) {
+                        bar.style.width = percent + '%';
+                        bar.setAttribute('data-percent', percent);
+                        percentElement.textContent = Math.round(percent) + '%';
+                    }
                 }
+            });
+
+            // Update the allocation method display
+            const methodElement = document.getElementById('allocationMethod');
+            const title = document.querySelector(`.protocol-card[data-strategy="${strategy}"] .protocol-title`).textContent;
+            if (methodElement) {
+                methodElement.textContent = title;
+            }
+
+            // Normalize to ensure exactly 100%
+            if (typeof normalizeTo100 === 'function') {
+                normalizeTo100();
+            } else if (typeof updateTotal === 'function') {
+                updateTotal();
+            }
+        }
+
+        // Protocol option selection
+        document.querySelectorAll('.protocol-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.protocol-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
                 
-                updateSelectedArea();
+                const strategy = this.dataset.strategy;
+                applyStrategy(strategy);
             });
         });
 
-        function updateSelectedArea() {
-            if (selectedStocks.length === 0) {
-                selectedArea.innerHTML = '<p class="no-stocks-text">No stocks selected</p>';
-            } else {
-                selectedArea.innerHTML = selectedStocks.map(stock => {
-                    const stockText = document.querySelector(`[data-stock="${stock}"]`).textContent;
-                    return `<button type="button" class="stock-btn selected" data-stock="${stock}">${stockText}</button>`;
-                }).join('');
+
+        // Make sure updateTotal is available
+        if (typeof updateTotal === 'undefined') {
+            function updateTotal() {
+                const items = document.querySelectorAll('.allocation-item');
+                let total = 0;
+                items.forEach(item => {
+                    const percent = parseFloat(item.querySelector('.allocation-bar').getAttribute('data-percent') || 0);
+                    total += percent;
+                });
+                const totalElement = document.getElementById('totalAllocation');
+                if (totalElement) {
+                    totalElement.textContent = Math.round(total) + '%';
+                    if (total > 100) {
+                        totalElement.style.color = '#ef4444';
+                    } else {
+                        totalElement.style.color = '#10b981';
+                    }
+                }
             }
         }
     </script>

@@ -3,161 +3,420 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Protocols - HOLD</title>
+    <title>Trending ETFs - HOLD</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <nav class="navbar">
+<body class="explore-page">
+    <nav class="navbar landing-navbar">
         <div class="container">
-            <div class="logo">HOLD</div>
-            <ul class="nav-links">
-                <li><a href="/">Home</a></li>
-                <li><a href="/explore" class="active">Explore</a></li>
-                <li><a href="/design">Design</a></li>
-                <li><a href="/portfolio">Portfolio</a></li>
-                <li><a href="/dashboard">Dashboard</a></li>
+            <div class="logo landing-logo">HOLD</div>
+            <ul class="nav-links landing-nav-links">
+                <li><a href="/explore" class="active">Trending ETFs</a></li>
+                <li><a href="/portfolio">My Portfolio</a></li>
+                <li><a href="/dashboard">Creators</a></li>
             </ul>
+            <div class="nav-actions">
+                <div class="search-container">
+                    <input type="text" class="search-input-nav" placeholder="Search">
+                    <svg class="search-icon-nav" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="m14 14 4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <a href="/design" class="btn btn-create-protocol">Create a protocol</a>
+            </div>
         </div>
     </nav>
 
-    <section class="page-header">
-        <div class="container">
-            <h1>Protocol Marketplace</h1>
-            <p>Browse autonomous investment protocols and find strategies that match your goals</p>
+    <section class="explore-main">
+        <div class="container explore-container">
+            <!-- Popular Protocols Section -->
+            <section class="protocols-section">
+                <h2 class="section-title">Popular protocols</h2>
+                <div class="protocols-grid">
+                    <div class="protocol-card-large" onclick="window.location.href='/protocol/ai-infrastructure'">
+                        <div class="protocol-graph-container">
+                            <canvas id="protocolChart1" width="400" height="120"></canvas>
+                        </div>
+                        <div class="protocol-content">
+                            <div class="protocol-header">
+                                <div>
+                                    <h3 class="protocol-name">AI Infrastructure Protocol</h3>
+                                    <p class="protocol-creator">@alexchen</p>
+                                </div>
+                                <div class="protocol-performance">
+                                    <div class="performance-metric">
+                                        <span class="metric-label">Monthly</span>
+                                        <span class="metric-value positive">+6.26%</span>
+                                    </div>
+                                    <div class="performance-metric">
+                                        <span class="metric-label">YTD</span>
+                                        <span class="metric-value positive">+6.26%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="asset-type-btn">Equities</button>
+                            <p class="protocol-description">Automatically allocates capital across leading AI infrastructure companies with monthly rebalancing based on market performance and growth metrics.</p>
+                            <div class="protocol-companies">
+                                <button class="company-btn">NVDA</button>
+                                <button class="company-btn">AMD</button>
+                                <button class="company-btn">TSM</button>
+                            </div>
+                            <div class="protocol-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Risk:</span>
+                                    <span class="detail-value risk-medium">Medium</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Capital:</span>
+                                    <span class="detail-value">$2,450,000</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Rebalancing:</span>
+                                    <span class="detail-value">Monthly</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Fee:</span>
+                                    <span class="detail-value">0.5% fee</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Participants:</span>
+                                    <span class="detail-value">127 participants</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="protocol-card-large" onclick="window.location.href='/protocol/boomer-rangs'">
+                        <div class="protocol-graph-container">
+                            <canvas id="protocolChart2" width="400" height="120"></canvas>
+                        </div>
+                        <div class="protocol-content">
+                            <div class="protocol-header">
+                                <div>
+                                    <h3 class="protocol-name">boomerRANGS</h3>
+                                    <p class="protocol-creator">@retirementfund</p>
+                                </div>
+                                <div class="protocol-performance">
+                                    <div class="performance-metric">
+                                        <span class="metric-label">Monthly</span>
+                                        <span class="metric-value positive">+2.1%</span>
+                                    </div>
+                                    <div class="performance-metric">
+                                        <span class="metric-label">YTD</span>
+                                        <span class="metric-value positive">+8.4%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="asset-type-btn">Equities</button>
+                            <p class="protocol-description">Ultra-conservative allocation focused on blue-chip dividend stocks, bonds, and defensive sectors. Designed for risk-averse investors seeking steady, predictable returns with quarterly rebalancing.</p>
+                            <div class="protocol-companies">
+                                <button class="company-btn">JNJ</button>
+                                <button class="company-btn">KO</button>
+                                <button class="company-btn">PG</button>
+                            </div>
+                            <div class="protocol-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Risk:</span>
+                                    <span class="detail-value risk-low">Low</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Capital:</span>
+                                    <span class="detail-value">$5,230,000</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Rebalancing:</span>
+                                    <span class="detail-value">Quarterly</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Fee:</span>
+                                    <span class="detail-value">0.3% fee</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Participants:</span>
+                                    <span class="detail-value">89 participants</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="protocol-card-large" onclick="window.location.href='/protocol/viral-alpha'">
+                        <div class="protocol-graph-container">
+                            <canvas id="protocolChart3" width="400" height="120"></canvas>
+                        </div>
+                        <div class="protocol-content">
+                            <div class="protocol-header">
+                                <div>
+                                    <h3 class="protocol-name">Viral Alpha</h3>
+                                    <p class="protocol-creator">@genzalpha</p>
+                                </div>
+                                <div class="protocol-performance">
+                                    <div class="performance-metric">
+                                        <span class="metric-label">Monthly</span>
+                                        <span class="metric-value positive">+15.7%</span>
+                                    </div>
+                                    <div class="performance-metric">
+                                        <span class="metric-label">YTD</span>
+                                        <span class="metric-value positive">+94.2%</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="asset-type-btn">Equities</button>
+                            <p class="protocol-description">Captures macro trends from TikTok, Twitter, and social media sentiment. Allocates to companies trending in Gen Z conversations with bi-weekly rebalancing based on viral momentum indicators.</p>
+                            <div class="protocol-companies">
+                                <button class="company-btn">TSLA</button>
+                                <button class="company-btn">NVDA</button>
+                                <button class="company-btn">AAPL</button>
+                            </div>
+                            <div class="protocol-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Risk:</span>
+                                    <span class="detail-value risk-medium">Medium</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Capital:</span>
+                                    <span class="detail-value">$1,845,200</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Rebalancing:</span>
+                                    <span class="detail-value">Bi-weekly</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Fee:</span>
+                                    <span class="detail-value">0.8% fee</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Participants:</span>
+                                    <span class="detail-value">256 participants</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Popular Creators Section -->
+            <section class="creators-section">
+                <h2 class="section-title">Popular creators</h2>
+                <div class="creators-grid">
+                    <div class="creator-card" onclick="window.location.href='/dashboard/markiplier'">
+                        <div class="creator-profile">
+                            <div class="creator-avatar-large">
+                                <img src="https://i.imgur.com/yKn8gvL.png" alt="Markiplier" class="avatar-img">
+                            </div>
+                            <div class="creator-info">
+                                <div class="creator-name-group">
+                                    <h3 class="creator-name">Markiplier</h3>
+                                    <span class="creator-verified">✓</span>
+                                </div>
+                                <p class="creator-handle">@markiplier • 37.8M subscribers • 5.7K videos</p>
+                                <div class="creator-social">
+                                    <a href="#" class="social-icon youtube">▶</a>
+                                    <a href="#" class="social-icon twitter">𝕏</a>
+                                    <a href="#" class="social-icon tiktok">♫</a>
+                                    <a href="#" class="social-icon instagram">📷</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="creator-protocols">
+                            <div class="creator-protocol-item">
+                                <div class="protocol-item-info">
+                                    <span class="protocol-item-name">MEME MAX</span>
+                                    <span class="protocol-item-participants">342 participants</span>
+                                </div>
+                                <div class="protocol-item-performance positive">
+                                    <span class="change-icon">▲</span>
+                                    <span>$124.50 (24.8%) Today</span>
+                                </div>
+                            </div>
+                            <div class="creator-protocol-item">
+                                <div class="protocol-item-info">
+                                    <span class="protocol-item-name">Viral Alpha</span>
+                                    <span class="protocol-item-participants">256 participants</span>
+                                </div>
+                                <div class="protocol-item-performance positive">
+                                    <span class="change-icon">▲</span>
+                                    <span>$78.90 (15.7%) Today</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="creator-card" onclick="window.location.href='/dashboard/markiplier-2'">
+                        <div class="creator-profile">
+                            <div class="creator-avatar-large">
+                                <img src="https://i.imgur.com/yKn8gvL.png" alt="Markiplier" class="avatar-img">
+                            </div>
+                            <div class="creator-info">
+                                <div class="creator-name-group">
+                                    <h3 class="creator-name">Markiplier</h3>
+                                    <span class="creator-verified">✓</span>
+                                </div>
+                                <p class="creator-handle">@markiplier • 37.8M subscribers • 5.7K videos</p>
+                                <div class="creator-social">
+                                    <a href="#" class="social-icon youtube">▶</a>
+                                    <a href="#" class="social-icon twitter">𝕏</a>
+                                    <a href="#" class="social-icon tiktok">♫</a>
+                                    <a href="#" class="social-icon instagram">📷</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="creator-protocols">
+                            <div class="creator-protocol-item">
+                                <div class="protocol-item-info">
+                                    <span class="protocol-item-name">boomerRANGS</span>
+                                    <span class="protocol-item-participants">89 participants</span>
+                                </div>
+                                <div class="protocol-item-performance positive">
+                                    <span class="change-icon">▲</span>
+                                    <span>$10.50 (2.1%) Today</span>
+                                </div>
+                            </div>
+                            <div class="creator-protocol-item">
+                                <div class="protocol-item-info">
+                                    <span class="protocol-item-name">Viral Alpha</span>
+                                    <span class="protocol-item-participants">256 participants</span>
+                                </div>
+                                <div class="protocol-item-performance positive">
+                                    <span class="change-icon">▲</span>
+                                    <span>$78.90 (15.7%) Today</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </section>
-
-    <section class="marketplace">
-        <div class="container">
-            <div class="filters">
-                <select id="categoryFilter" class="filter-select">
-                    <option value="">All Categories</option>
-                    <option value="Equities">Equities</option>
-                    <option value="Cryptocurrency">Cryptocurrency</option>
-                    <option value="Prediction Markets">Prediction Markets</option>
-                    <option value="DeFi">DeFi</option>
-                </select>
-                <select id="riskFilter" class="filter-select">
-                    <option value="">All Risk Levels</option>
-                    <option value="Low">Low</option>
-                    <option value="Medium">Medium</option>
-                    <option value="High">High</option>
-                </select>
-            </div>
-
-            <div id="protocolsGrid" class="protocols-grid">
-                <!-- Protocols will be loaded here -->
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 HOLD. Autonomous Investment Protocols.</p>
-        </div>
-    </footer>
 
     <script src="shared.js"></script>
     <script>
-        let allProtocols = [];
-
-        async function loadProtocols() {
-            allProtocols = await fetchProtocols();
-            renderProtocols(allProtocols);
-        }
-
-        function renderProtocols(protocols) {
-            const grid = document.getElementById('protocolsGrid');
-            grid.innerHTML = '';
-
-            if (protocols.length === 0) {
-                grid.innerHTML = '<p class="no-results">No protocols found matching your filters.</p>';
-                return;
+        // Draw protocol charts with unique patterns
+        function drawProtocolChart(canvasId) {
+            const canvas = document.getElementById(canvasId);
+            if (!canvas) return;
+            
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            // Clear canvas
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw background
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillRect(0, 0, width, height);
+            
+            const padding = { top: 15, right: 15, bottom: 10, left: 15 };
+            const chartWidth = width - padding.left - padding.right;
+            const chartHeight = height - padding.top - padding.bottom;
+            
+            let points = [];
+            const numPoints = 40;
+            
+            // Generate unique patterns for each protocol
+            if (canvasId === 'protocolChart1') {
+                // MEME MAX - High volatility, big swings, meme coin behavior
+                let value = 40;
+                for (let i = 0; i < numPoints; i++) {
+                    const progress = i / numPoints;
+                    // Start low, big pump, then volatile swings
+                    if (progress < 0.2) {
+                        value += (Math.random() * 15 + 5); // Initial pump
+                    } else if (progress < 0.4) {
+                        value += (Math.random() * 20 - 10); // Big volatility
+                    } else if (progress < 0.6) {
+                        value += (Math.random() * 25 - 12); // More volatility
+                    } else if (progress < 0.8) {
+                        value += (Math.random() * 18 - 9); // Continued swings
+                    } else {
+                        value += (Math.random() * 12 + 3); // End with upward trend
+                    }
+                    value = Math.max(30, Math.min(100, value)); // Keep in bounds
+                    points.push(value);
+                }
+            } else if (canvasId === 'protocolChart2') {
+                // boomerRANGS - Very stable, gradual upward trend
+                let value = 45;
+                for (let i = 0; i < numPoints; i++) {
+                    const progress = i / numPoints;
+                    // Steady, conservative growth with minimal volatility
+                    const trend = progress * 8; // Gradual upward trend
+                    const noise = (Math.random() * 2 - 1); // Very small random variation
+                    value = 45 + trend + noise;
+                    value = Math.max(40, Math.min(60, value)); // Keep in tight range
+                    points.push(value);
+                }
+            } else if (canvasId === 'protocolChart3') {
+                // Viral Alpha - Moderate volatility with spikes (social trends)
+                let value = 42;
+                for (let i = 0; i < numPoints; i++) {
+                    const progress = i / numPoints;
+                    // Moderate growth with occasional viral spikes
+                    const trend = progress * 12; // Upward trend
+                    let variation = 0;
+                    
+                    // Create occasional spikes (viral moments)
+                    if (i % 7 === 0 || i % 11 === 0) {
+                        variation = Math.random() * 15 + 8; // Viral spike
+                    } else if (i % 5 === 0) {
+                        variation = -(Math.random() * 8 + 3); // Small dip
+                    } else {
+                        variation = (Math.random() * 6 - 3); // Normal variation
+                    }
+                    
+                    value = 42 + trend + variation;
+                    value = Math.max(35, Math.min(75, value));
+                    points.push(value);
+                }
             }
-
-            protocols.forEach(protocol => {
-                const card = createProtocolCard(protocol);
-                grid.appendChild(card);
+            
+            // Normalize points to fit chart height
+            const min = Math.min(...points);
+            const max = Math.max(...points);
+            const range = max - min || 1;
+            
+            const normalizedPoints = points.map((point, index) => {
+                const x = padding.left + (index / (points.length - 1)) * chartWidth;
+                const normalizedY = ((point - min) / range);
+                const y = padding.top + chartHeight - (normalizedY * chartHeight);
+                return { x, y };
             });
-        }
-
-        function createProtocolCard(protocol) {
-            const card = document.createElement('div');
-            card.className = 'protocol-card';
-            card.onclick = () => window.location.href = `/protocol/${protocol.id}`;
-
-            const riskColor = getRiskColor(protocol.riskLevel);
-            const categoryIcon = getCategoryIcon(protocol.category);
-
-            card.innerHTML = `
-                <div class="protocol-card-header">
-                    <div>
-                        <h3>${protocol.name}</h3>
-                        <p class="protocol-architect">by ${protocol.architect}</p>
-                    </div>
-                    <span class="protocol-category">${categoryIcon} ${protocol.category}</span>
-                </div>
-                <p class="protocol-description">${protocol.description}</p>
-                <div class="protocol-assets">
-                    <strong>Assets:</strong>
-                    <div class="asset-tags">
-                        ${protocol.assets.map(asset => `<span class="asset-tag">${asset.symbol}</span>`).join('')}
-                    </div>
-                </div>
-                <div class="protocol-stats">
-                    <div class="protocol-stat">
-                        <span class="stat-label">Rebalance</span>
-                        <span class="stat-value">${protocol.rebalanceFrequency}</span>
-                    </div>
-                    <div class="protocol-stat">
-                        <span class="stat-label">Risk</span>
-                        <span class="stat-value" style="color: ${riskColor}">${protocol.riskLevel}</span>
-                    </div>
-                    <div class="protocol-stat">
-                        <span class="stat-label">Capital</span>
-                        <span class="stat-value">${formatCurrency(protocol.totalCapital)}</span>
-                    </div>
-                </div>
-                <div class="protocol-performance">
-                    <div class="performance-metric">
-                        <span class="metric-label">YTD</span>
-                        <span class="metric-value positive">${formatPercent(protocol.performance.ytd)}</span>
-                    </div>
-                    <div class="performance-metric">
-                        <span class="metric-label">Monthly</span>
-                        <span class="metric-value positive">${formatPercent(protocol.performance.monthly)}</span>
-                    </div>
-                </div>
-                <div class="protocol-footer">
-                    <span class="participants">${protocol.participants} participants</span>
-                    <span class="fee">${protocol.managementFee}% fee</span>
-                </div>
-            `;
-
-            return card;
-        }
-
-        function applyFilters() {
-            const category = document.getElementById('categoryFilter').value;
-            const risk = document.getElementById('riskFilter').value;
-
-            let filtered = allProtocols;
-
-            if (category) {
-                filtered = filtered.filter(p => p.category === category);
+            
+            // Draw baseline (dashed horizontal line in middle)
+            ctx.strokeStyle = '#333333';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([3, 3]);
+            ctx.beginPath();
+            const baselineY = padding.top + chartHeight / 2;
+            ctx.moveTo(padding.left, baselineY);
+            ctx.lineTo(width - padding.right, baselineY);
+            ctx.stroke();
+            ctx.setLineDash([]);
+            
+            // Draw purple line with smooth curves
+            ctx.strokeStyle = '#6366f1';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            
+            // Use quadratic curves for smoother lines
+            ctx.moveTo(normalizedPoints[0].x, normalizedPoints[0].y);
+            for (let i = 1; i < normalizedPoints.length; i++) {
+                if (i === normalizedPoints.length - 1) {
+                    ctx.lineTo(normalizedPoints[i].x, normalizedPoints[i].y);
+                } else {
+                    const cp1x = (normalizedPoints[i - 1].x + normalizedPoints[i].x) / 2;
+                    const cp1y = (normalizedPoints[i - 1].y + normalizedPoints[i].y) / 2;
+                    ctx.quadraticCurveTo(normalizedPoints[i].x, normalizedPoints[i].y, cp1x, cp1y);
+                }
             }
-
-            if (risk) {
-                filtered = filtered.filter(p => p.riskLevel === risk);
-            }
-
-            renderProtocols(filtered);
+            ctx.stroke();
         }
-
-        document.getElementById('categoryFilter').addEventListener('change', applyFilters);
-        document.getElementById('riskFilter').addEventListener('change', applyFilters);
-
-        loadProtocols();
+        
+        // Draw all charts
+        drawProtocolChart('protocolChart1');
+        drawProtocolChart('protocolChart2');
+        drawProtocolChart('protocolChart3');
     </script>
 </body>
 </html>

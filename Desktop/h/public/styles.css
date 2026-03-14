@@ -1074,10 +1074,1209 @@ code, pre, .mono {
 }
 
 /* Portfolio Page */
-.portfolio {
-    padding: 3rem 0;
-    background: var(--bg-light);
-    min-height: 80vh;
+.portfolio-page {
+    background: #000000;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+.portfolio-main {
+    padding: 2rem 0;
+    min-height: calc(100vh - 80px);
+}
+
+.portfolio-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Navigation Search */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.search-input-nav {
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 0.5rem;
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-family: 'Geist Sans', sans-serif;
+    width: 200px;
+}
+
+.search-input-nav:focus {
+    outline: none;
+    border-color: #6366f1;
+}
+
+.search-icon-nav {
+    position: absolute;
+    right: 0.75rem;
+    color: #666666;
+    pointer-events: none;
+}
+
+.btn-create-protocol {
+    background: #6366f1;
+    color: #ffffff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: 'Geist Sans', sans-serif;
+    transition: background 0.3s ease;
+}
+
+.btn-create-protocol:hover {
+    background: #5855eb;
+}
+
+/* Left Panel */
+.portfolio-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.portfolio-value-section {
+    margin-bottom: 2rem;
+}
+
+.portfolio-value-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.portfolio-value {
+    font-size: 3.5rem;
+    font-weight: 400;
+    color: #ffffff;
+    font-family: 'Geist Sans', sans-serif;
+    margin: 0;
+    line-height: 1.1;
+}
+
+.portfolio-change {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.portfolio-change.positive {
+    color: #10b981;
+}
+
+.change-icon {
+    font-size: 0.75rem;
+}
+
+.change-amount {
+    font-weight: 500;
+}
+
+.change-label {
+    color: #999999;
+    font-size: 0.9rem;
+    margin-left: 0.25rem;
+}
+
+/* Graph Section */
+.graph-section {
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.graph-container {
+    position: relative;
+    margin-bottom: 1.5rem;
+    height: 300px;
+}
+
+#portfolioChart {
+    width: 100%;
+    height: 100%;
+}
+
+.graph-timestamp {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-family: 'Geist Sans', sans-serif;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.25rem;
+    backdrop-filter: blur(4px);
+}
+
+.time-range-selectors {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+}
+
+.time-range-btn {
+    background: transparent;
+    border: 1px solid #333333;
+    color: #999999;
+    padding: 0.5rem 1.25rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+    font-family: 'Geist Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 400;
+}
+
+.time-range-btn:hover {
+    border-color: #6366f1;
+    color: #ffffff;
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.time-range-btn.active {
+    background: #6366f1;
+    border-color: #6366f1;
+    color: #ffffff;
+}
+
+/* Updates Section */
+.updates-section {
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+}
+
+.updates-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 1.25rem;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.updates-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.update-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.update-avatar {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.update-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.update-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.update-author {
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.update-badge {
+    font-size: 0.85rem;
+    color: #6366f1;
+}
+
+.update-text {
+    color: #999999;
+    font-size: 0.875rem;
+    margin: 0;
+    font-family: 'Geist Sans', sans-serif;
+    line-height: 1.5;
+}
+
+.update-action {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+}
+
+.update-icon {
+    color: #6366f1;
+    font-size: 1.1rem;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Right Panel */
+.portfolio-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Earnings Section */
+.earnings-section {
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.earnings-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #999999;
+    margin-bottom: 1rem;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.earnings-value {
+    font-size: 2.75rem;
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
+    font-family: 'Geist Sans', sans-serif;
+    line-height: 1.1;
+}
+
+.earnings-change {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.earnings-change.positive {
+    color: #10b981;
+}
+
+/* Holdings Section */
+.holdings-section {
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+}
+
+.holdings-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #999999;
+    margin-bottom: 1rem;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.holdings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.holding-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid #2a2a2a;
+    margin-bottom: 1rem;
+}
+
+.holding-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.holding-avatar {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.holding-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.holding-name-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.holding-name {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.holding-author {
+    color: #999999;
+    font-size: 0.85rem;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.holding-badge {
+    font-size: 0.85rem;
+    color: #6366f1;
+}
+
+.holding-value {
+    color: #ffffff;
+    font-size: 1.15rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-family: 'Geist Sans', sans-serif;
+    text-align: right;
+}
+
+.holding-change {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-family: 'Geist Sans', sans-serif;
+    justify-content: flex-end;
+}
+
+.holding-change.positive {
+    color: #10b981;
+}
+
+/* Explore / Trending ETFs Page */
+.explore-page {
+    background: #000000;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+.explore-main {
+    padding: 2rem 0;
+    min-height: calc(100vh - 80px);
+}
+
+.explore-container {
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.protocols-section,
+.creators-section {
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.protocols-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.protocol-card-large {
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.protocol-card-large:hover {
+    border-color: #6366f1;
+    transform: translateY(-2px);
+}
+
+.protocol-graph-container {
+    width: 100%;
+    height: 120px;
+    background: #1a1a1a;
+    padding: 0.75rem;
+    position: relative;
+}
+
+.protocol-graph-container canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.protocol-content {
+    padding: 1.5rem;
+}
+
+.protocol-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+    gap: 1rem;
+}
+
+.protocol-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 0.25rem 0;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.protocol-creator {
+    font-size: 0.85rem;
+    color: #999999;
+    margin: 0;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.protocol-performance {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+}
+
+.performance-metric {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    color: #999999;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.metric-value {
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.metric-value.positive {
+    color: #10b981;
+}
+
+.asset-type-btn {
+    background: transparent;
+    border: 1px solid #333333;
+    color: #ffffff;
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    font-family: 'Geist Sans', sans-serif;
+    margin-bottom: 0.75rem;
+    cursor: default;
+    display: inline-block;
+}
+
+.protocol-description {
+    font-size: 0.875rem;
+    color: #999999;
+    line-height: 1.5;
+    margin: 0 0 0.75rem 0;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.protocol-companies {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.company-btn {
+    background: transparent;
+    border: 1px solid #333333;
+    color: #ffffff;
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.8rem;
+    font-family: 'Geist Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.company-btn:hover {
+    border-color: #6366f1;
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.protocol-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #2a2a2a;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detail-label {
+    font-size: 0.85rem;
+    color: #999999;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.detail-value {
+    font-size: 0.85rem;
+    color: #ffffff;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.detail-value.risk-medium {
+    color: #fbbf24;
+    font-weight: 500;
+}
+
+.detail-value.risk-high {
+    color: #ef4444;
+    font-weight: 500;
+}
+
+.detail-value.risk-low {
+    color: #10b981;
+    font-weight: 500;
+}
+
+/* Popular Creators Section */
+.creators-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.creator-card {
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.creator-card:hover {
+    border-color: #6366f1;
+    transform: translateY(-2px);
+}
+
+.creator-profile {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.creator-avatar-large {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background: #2a2a2a;
+}
+
+.creator-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.creator-name-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.creator-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.creator-verified {
+    color: #6366f1;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.creator-handle {
+    font-size: 0.85rem;
+    color: #999999;
+    margin: 0 0 0.75rem 0;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.creator-social {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
+}
+
+.social-icon:hover {
+    opacity: 0.7;
+}
+
+.social-icon.youtube {
+    color: #ff0000;
+}
+
+.social-icon.twitter {
+    color: #ffffff;
+}
+
+.social-icon.tiktok {
+    color: #000000;
+    background: #ffffff;
+    border-radius: 0.25rem;
+}
+
+.social-icon.instagram {
+    color: #ffffff;
+}
+
+.creator-protocols {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #2a2a2a;
+}
+
+.creator-protocol-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background: #0a0a0a;
+    border-radius: 0.25rem;
+}
+
+.protocol-item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.protocol-item-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #ffffff;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.protocol-item-participants {
+    font-size: 0.8rem;
+    color: #999999;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.protocol-item-performance {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.protocol-item-performance.positive {
+    color: #10b981;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .portfolio-container {
+        grid-template-columns: 1fr;
+    }
+
+    .etf-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 1024px) {
+    .protocols-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .creators-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .protocols-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Protocol Detail Page */
+.protocol-detail-page {
+    background: #000000;
+    color: #ffffff;
+    min-height: 100vh;
+}
+
+.protocol-detail-main {
+    padding: 2rem 0;
+    min-height: calc(100vh - 80px);
+}
+
+.protocol-detail-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 2rem;
+}
+
+.protocol-detail-left {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.protocol-detail-header {
+    margin-bottom: 0.5rem;
+}
+
+.protocol-detail-title {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.protocol-value-section {
+    margin-bottom: 1rem;
+}
+
+.protocol-value-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.protocol-value {
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.protocol-change {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.protocol-change.positive {
+    color: #10b981;
+}
+
+.protocol-change.negative {
+    color: #ef4444;
+}
+
+.change-icon {
+    font-size: 0.9rem;
+}
+
+.change-amount {
+    font-weight: 500;
+}
+
+.change-label {
+    color: #999999;
+    font-size: 0.9rem;
+}
+
+/* Protocol Info Section */
+.protocol-info-section {
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.info-label {
+    font-size: 0.85rem;
+    color: #999999;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.info-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.info-value.positive {
+    color: #10b981;
+}
+
+.info-value.negative {
+    color: #ef4444;
+}
+
+/* Fund Composition Section */
+.fund-composition-section {
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+}
+
+.section-title-small {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 1.5rem 0;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.subsection-title {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    margin: 0 0 1rem 0;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.sectors-section {
+    margin-bottom: 2rem;
+}
+
+.sector-chart-container {
+    margin-bottom: 1rem;
+}
+
+.sector-chart-image {
+    width: 100%;
+    height: auto;
+    border-radius: 0.25rem;
+}
+
+.sector-chart-fallback {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sector-bar {
+    display: flex;
+    height: 40px;
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.sector-segment {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 500;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.sector-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.sector-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #ffffff;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.sector-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 0.25rem;
+    flex-shrink: 0;
+}
+
+/* Holdings Table */
+.holdings-section {
+    margin-top: 2rem;
+}
+
+.holdings-table-container {
+    overflow-x: auto;
+}
+
+.holdings-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.holdings-table thead {
+    border-bottom: 1px solid #333333;
+}
+
+.holdings-table th {
+    text-align: left;
+    padding: 0.75rem 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #999999;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.holdings-table th:last-child {
+    text-align: right;
+}
+
+.holdings-table tbody tr {
+    border-bottom: 1px solid #2a2a2a;
+}
+
+.holdings-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.holdings-table td {
+    padding: 0.75rem 0;
+    font-size: 0.875rem;
+    color: #ffffff;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.holdings-table td:last-child {
+    text-align: right;
+    color: #999999;
+}
+
+/* Allocate Widget */
+.protocol-detail-right {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+.allocate-widget {
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.widget-tabs {
+    display: flex;
+    border-bottom: 1px solid #333333;
+}
+
+.widget-tab {
+    flex: 1;
+    padding: 1rem;
+    background: transparent;
+    border: none;
+    color: #999999;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: 'Geist Sans', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.widget-tab.active {
+    color: #ffffff;
+    border-bottom-color: #6366f1;
+}
+
+.widget-tab:hover {
+    color: #ffffff;
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.widget-content {
+    padding: 1.5rem;
+}
+
+.widget-field {
+    margin-bottom: 1.25rem;
+}
+
+.widget-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #999999;
+    margin-bottom: 0.5rem;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.widget-input {
+    width: 100%;
+    padding: 0.75rem;
+    background: #0a0a0a;
+    border: 1px solid #333333;
+    border-radius: 0.25rem;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.widget-input:focus {
+    outline: none;
+    border-color: #6366f1;
+}
+
+.widget-value {
+    font-size: 0.9rem;
+    color: #ffffff;
+    font-family: 'Geist Sans', sans-serif;
+    padding: 0.5rem 0;
+}
+
+.widget-button {
+    width: 100%;
+    padding: 0.875rem;
+    background: #f97316;
+    border: none;
+    border-radius: 0.25rem;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: 'Geist Sans', sans-serif;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 1rem;
+}
+
+.widget-button:hover {
+    background: #ea580c;
+}
+
+.widget-footer {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #2a2a2a;
+}
+
+.widget-info {
+    font-size: 0.85rem;
+    color: #999999;
+    margin: 0.5rem 0;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+
+@media (max-width: 1024px) {
+    .protocol-detail-container {
+        grid-template-columns: 1fr;
+    }
+
+    .protocol-detail-right {
+        position: static;
+    }
 }
 
 .portfolio-summary {
@@ -1542,52 +2741,42 @@ code, pre, .mono {
 
 /* Onboarding Pages Styles */
 .onboarding-page {
-    background: #0a0a0a;
+    background: #000000;
     color: #ffffff;
     min-height: 100vh;
     position: relative;
-    background-image: url('https://i.imgur.com/hyufIbB.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
 }
 
 .onboarding-page::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(10, 10, 10, 0.4);
-    pointer-events: none;
-    z-index: 0;
+    display: none;
 }
 
 .onboarding-content {
     position: relative;
     z-index: 1;
-    padding: 4rem 0;
+    padding: 2rem 0 8rem;
     min-height: calc(100vh - 80px);
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    padding-top: 6rem;
 }
 
 .onboarding-container {
-    max-width: 600px;
+    max-width: 500px;
     width: 100%;
+    margin: 0 auto;
 }
 
 .back-link {
     color: #ffffff;
     text-decoration: none;
     font-size: 0.95rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     display: inline-block;
     opacity: 0.9;
     transition: opacity 0.3s ease;
+    font-family: 'Geist Sans', sans-serif;
 }
 
 .back-link:hover {
@@ -1597,22 +2786,25 @@ code, pre, .mono {
 .onboarding-form {
     background: transparent;
     padding: 0;
+    width: 100%;
 }
 
 .onboarding-title {
     font-family: 'Geist Sans', sans-serif;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 400;
     line-height: 1.2;
     margin-bottom: 3rem;
     color: #ffffff;
-    text-align: center;
+    text-align: left;
 }
 
 .profile-icon-large {
     display: flex;
     justify-content: center;
-    margin-bottom: 3rem;
+    margin: 0 auto 3rem;
+    width: 120px;
+    height: 120px;
 }
 
 .profile-icon-large svg {
@@ -1620,8 +2812,17 @@ code, pre, .mono {
     height: 120px;
 }
 
+.profile-icon-large svg circle:first-child {
+    fill: #2A2A2A;
+}
+
+.profile-icon-large svg circle:last-child,
+.profile-icon-large svg path {
+    fill: #1A1A1A;
+}
+
 .form-group-onboarding {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .form-group-onboarding label {
@@ -1629,12 +2830,13 @@ code, pre, .mono {
     color: #ffffff;
     font-size: 0.95rem;
     margin-bottom: 0.75rem;
-    font-weight: 500;
+    font-weight: 400;
+    font-family: 'Geist Sans', sans-serif;
 }
 
 .form-group-onboarding input {
     width: 100%;
-    padding: 1rem;
+    padding: 0.875rem 1rem;
     background: #1a1a1a;
     border: 1px solid #333333;
     border-radius: 0.5rem;
@@ -1642,6 +2844,7 @@ code, pre, .mono {
     font-size: 1rem;
     font-family: 'Geist Sans', sans-serif;
     transition: border-color 0.3s ease;
+    box-sizing: border-box;
 }
 
 .form-group-onboarding input:focus {
@@ -1649,31 +2852,38 @@ code, pre, .mono {
     border-color: #6366f1;
 }
 
+.form-section {
+    margin-bottom: 2rem;
+}
+
 .form-question {
     display: block;
     color: #ffffff;
     font-size: 1rem;
     margin-bottom: 1.5rem;
-    font-weight: 500;
+    font-weight: 400;
+    font-family: 'Geist Sans', sans-serif;
 }
 
 .selection-buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    gap: 0.75rem;
     margin-bottom: 2rem;
 }
 
 .selection-btn {
-    padding: 1rem;
+    padding: 0.875rem 1rem;
     background: transparent;
     border: 1px solid #333333;
     border-radius: 0.5rem;
     color: #ffffff;
     font-size: 0.95rem;
     font-family: 'Geist Sans', sans-serif;
+    font-weight: 400;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-align: center;
 }
 
 .selection-btn:hover {
@@ -1726,12 +2936,357 @@ code, pre, .mono {
     margin-bottom: 2rem;
 }
 
-.popular-label,
-.allocation-label {
+.popular-label {
     color: #ffffff;
     font-size: 1rem;
     margin-bottom: 1rem;
     font-weight: 500;
+}
+
+.allocation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.allocation-label {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.allocation-method {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 400;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.allocation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.allocation-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #1a1a1a;
+}
+
+.allocation-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.allocation-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.allocation-name-group {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.allocation-name {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.allocation-risk-badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.allocation-risk-badge.risk-on {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.allocation-risk-badge.risk-moderate {
+    background: rgba(251, 191, 36, 0.2);
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.allocation-risk-badge.risk-off {
+    background: rgba(34, 197, 94, 0.2);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.allocation-description {
+    color: #999999;
+    font-size: 0.8rem;
+    margin: 0.5rem 0 0 0;
+    font-family: 'Geist Sans', sans-serif;
+    line-height: 1.4;
+}
+
+.allocation-percent {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.allocation-bar-container {
+    width: 100%;
+    height: 8px;
+    background: #1a1a1a;
+    border-radius: 4px;
+    overflow: visible;
+    position: relative;
+    cursor: pointer;
+}
+
+.allocation-bar {
+    height: 100%;
+    background: #6366f1;
+    border-radius: 4px;
+    position: relative;
+    min-width: 2px;
+    cursor: grab;
+    transition: background 0.2s ease;
+}
+
+.allocation-bar:active {
+    cursor: grabbing;
+}
+
+.allocation-bar:hover {
+    background: #5855eb;
+}
+
+.allocation-handle {
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    border: 2px solid #6366f1;
+    border-radius: 50%;
+    cursor: grab;
+    transition: all 0.2s ease;
+}
+
+.allocation-handle:hover {
+    transform: translateY(-50%) scale(1.2);
+    border-color: #5855eb;
+}
+
+.allocation-handle:active {
+    cursor: grabbing;
+}
+
+.allocation-total {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #333333;
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.allocation-total strong {
+    font-weight: 600;
+}
+
+.allocation-total strong[style*="color: rgb(16, 185, 129)"] {
+    color: #10b981 !important;
+}
+
+/* Execution Frequency Section */
+.execution-frequency-section {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.section-title {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.section-description {
+    color: #999999;
+    font-size: 0.875rem;
+    margin-bottom: 2rem;
+    font-family: 'Geist Sans', sans-serif;
+    line-height: 1.5;
+}
+
+.frequency-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.frequency-card {
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.frequency-card:hover {
+    border-color: #6366f1;
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.frequency-card.selected {
+    border-color: #6366f1;
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.frequency-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+}
+
+.frequency-title {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.frequency-badge {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.frequency-badge.active {
+    background: rgba(99, 102, 241, 0.2);
+    color: #6366f1;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+}
+
+.frequency-badge.recommended {
+    background: rgba(16, 185, 129, 0.2);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.frequency-badge.conservative {
+    background: rgba(251, 191, 36, 0.2);
+    color: #fbbf24;
+    border: 1px solid rgba(251, 191, 36, 0.3);
+}
+
+.frequency-description {
+    color: #999999;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0 0 1rem 0;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.frequency-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #2a2a2a;
+}
+
+.frequency-detail-item {
+    color: #666666;
+    font-size: 0.8rem;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.protocol-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.protocol-card {
+    background: #1a1a1a;
+    border: 1px solid #333333;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.protocol-card:hover {
+    border-color: #6366f1;
+    background: rgba(99, 102, 241, 0.05);
+}
+
+.protocol-card.selected {
+    border-color: #6366f1;
+    background: rgba(99, 102, 241, 0.1);
+}
+
+.protocol-title {
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.protocol-description {
+    color: #999999;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin: 0 0 0.75rem 0;
+    font-family: 'Geist Sans', sans-serif;
+}
+
+.protocol-preview {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #2a2a2a;
+}
+
+.preview-label {
+    color: #666666;
+    font-size: 0.75rem;
+    font-weight: 500;
+    font-family: 'Geist Sans', sans-serif;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.preview-allocation {
+    color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 400;
+    font-family: 'Geist Sans', sans-serif;
+    display: block;
 }
 
 .stock-buttons {
@@ -1742,13 +3297,14 @@ code, pre, .mono {
 }
 
 .stock-btn {
-    padding: 0.75rem 1.5rem;
+    padding: 0.75rem 1.25rem;
     background: transparent;
     border: 1px solid #333333;
     border-radius: 0.5rem;
     color: #ffffff;
     font-size: 0.95rem;
     font-family: 'Geist Sans', sans-serif;
+    font-weight: 400;
     cursor: pointer;
     transition: all 0.3s ease;
     white-space: nowrap;
@@ -1770,13 +3326,13 @@ code, pre, .mono {
     background: #1a1a1a;
     border: 1px solid #333333;
     border-radius: 0.5rem;
-    padding: 2rem;
+    padding: 1.5rem;
     margin-bottom: 2rem;
     display: flex;
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: 0.75rem;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .no-stocks-text {
@@ -1793,18 +3349,90 @@ code, pre, .mono {
     border: none;
     border-radius: 0.5rem;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 500;
     font-family: 'Geist Sans', sans-serif;
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
     display: block;
     text-align: center;
+    margin-top: 1rem;
 }
 
-.btn-primary-onboarding:hover {
+.btn-primary-onboarding:hover:not(.connected):not(:disabled) {
     background: #5855eb;
     transform: translateY(-1px);
+}
+
+.btn-primary-onboarding.connected {
+    background: #10b981;
+    cursor: default;
+}
+
+.btn-primary-onboarding:disabled {
+    opacity: 0.8;
+    cursor: not-allowed;
+}
+
+/* Onboarding Progress Bar */
+.onboarding-progress {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 0;
+    background: #000000;
+    border-top: 1px solid #1a1a1a;
+    z-index: 100;
+}
+
+.progress-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.progress-step {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.progress-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #333333;
+    border: 2px solid #333333;
+    transition: all 0.3s ease;
+}
+
+.progress-step.active .progress-dot {
+    background: #6366f1;
+    border-color: #6366f1;
+    width: 14px;
+    height: 14px;
+}
+
+.progress-step.completed .progress-dot {
+    background: #6366f1;
+    border-color: #6366f1;
+}
+
+.progress-line {
+    flex: 1;
+    height: 2px;
+    background: #333333;
+    margin: 0 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.progress-line.active {
+    background: #6366f1;
 }
 
 /* Responsive Onboarding */
@@ -1823,5 +3451,13 @@ code, pre, .mono {
 
     .stock-btn {
         width: 100%;
+    }
+
+    .onboarding-progress {
+        padding: 1.5rem 0;
+    }
+
+    .progress-bar {
+        padding: 0 1rem;
     }
 }

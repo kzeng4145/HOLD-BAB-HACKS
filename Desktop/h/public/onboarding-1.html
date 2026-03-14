@@ -47,11 +47,37 @@
                     <input type="text" id="userBackground" name="userBackground" value="Penny stocks, crypto, prediction markets">
                 </div>
 
-                <button type="button" class="btn btn-primary-onboarding" onclick="window.location.href='/onboarding-2'">Connect your wallet</button>
+                <button type="button" id="connect-wallet-btn" class="btn btn-primary-onboarding">Connect your wallet</button>
             </div>
         </div>
     </section>
 
+    <div class="onboarding-progress">
+        <div class="progress-bar">
+            <div class="progress-step active" data-step="1">
+                <div class="progress-dot"></div>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="2">
+                <div class="progress-dot"></div>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="3">
+                <div class="progress-dot"></div>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="4">
+                <div class="progress-dot"></div>
+            </div>
+            <div class="progress-line"></div>
+            <div class="progress-step" data-step="5">
+                <div class="progress-dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="wallet-connect.js"></script>
     <script src="shared.js"></script>
+    <script src="onboarding-nav.js"></script>
 </body>
 </html>

@@ -76,7 +76,11 @@ app.get('/onboarding-3', (req, res) => {
 });
 
 app.get('/onboarding-4', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'onboarding-4.html'));
+    res.sendFile(path.join(__dirname, 'public', 'onboarding-4.html'));
+});
+
+app.get('/onboarding-5', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'onboarding-5.html'));
 });
 
 // Start the server

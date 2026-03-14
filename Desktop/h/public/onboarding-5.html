@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Execution frequency - HOLD</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="onboarding-page">
+    <nav class="navbar landing-navbar">
+        <div class="container">
+            <div class="logo landing-logo">HOLD</div>
+            <ul class="nav-links landing-nav-links">
+                <li><a href="/explore">Trending ETFs</a></li>
+                <li><a href="/portfolio">My Portfolio</a></li>
+                <li><a href="/dashboard">Creators</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="#" class="nav-login">Log in</a>
+                <a href="#" class="btn btn-signup-nav">Sign up</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="onboarding-content">
+        <div class="container onboarding-container">
+            <a href="/onboarding-4" class="back-link">← Back</a>
+            
+            <div class="onboarding-form">
+                <h1 class="onboarding-title">Execution frequency</h1>
+                <p class="section-description">How often should your protocol automatically rebalance allocations?</p>
+                
+                <div class="execution-frequency-section">
+                    <div class="frequency-options">
+                        <div class="frequency-card" data-frequency="continuous">
+                            <div class="frequency-header">
+                                <h4 class="frequency-title">Continuous monitoring</h4>
+                                <span class="frequency-badge active">Active</span>
+                            </div>
+                            <p class="frequency-description">Real-time adjustments based on market conditions. Best for momentum strategies and volatile assets.</p>
+                            <div class="frequency-details">
+                                <span class="frequency-detail-item">⚡ Instant execution</span>
+                                <span class="frequency-detail-item">📊 Market-responsive</span>
+                                <span class="frequency-detail-item">💰 Higher gas fees</span>
+                            </div>
+                        </div>
+                        
+                        <div class="frequency-card selected" data-frequency="weekly">
+                            <div class="frequency-header">
+                                <h4 class="frequency-title">Weekly rebalance</h4>
+                                <span class="frequency-badge recommended">Recommended</span>
+                            </div>
+                            <p class="frequency-description">Weekly portfolio adjustments to capture trends while managing transaction costs. Ideal for most strategies.</p>
+                            <div class="frequency-details">
+                                <span class="frequency-detail-item">📅 Every Monday</span>
+                                <span class="frequency-detail-item">⚖️ Balanced approach</span>
+                                <span class="frequency-detail-item">💵 Moderate fees</span>
+                            </div>
+                        </div>
+                        
+                        <div class="frequency-card" data-frequency="monthly">
+                            <div class="frequency-header">
+                                <h4 class="frequency-title">Monthly rebalance</h4>
+                                <span class="frequency-badge conservative">Conservative</span>
+                            </div>
+                            <p class="frequency-description">Monthly rebalancing for long-term strategies. Lower costs, less frequent adjustments.</p>
+                            <div class="frequency-details">
+                                <span class="frequency-detail-item">📆 1st of month</span>
+                                <span class="frequency-detail-item">🎯 Long-term focus</span>
+                                <span class="frequency-detail-item">💵 Lower fees</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-primary-onboarding" onclick="window.location.href='/portfolio'">Continue →</button>
+            </div>
+        </div>
+    </section>
+
+    <div class="onboarding-progress">
+        <div class="progress-bar">
+            <div class="progress-step completed" data-step="1">
+                <div class="progress-dot"></div>
+            </div>
+            <div class="progress-line active"></div>
+            <div class="progress-step completed" data-step="2">
+                <div class="progress-dot"></div>
+            </div>
+            <div class="progress-line active"></div>
+            <div class="progress-step completed" data-step="3">
+                <div class="progress-dot"></div>
+            </div>
+            <div class="progress-line active"></div>
+            <div class="progress-step completed" data-step="4">
+                <div class="progress-dot"></div>
+            </div>
+            <div class="progress-line active"></div>
+            <div class="progress-step active" data-step="5">
+                <div class="progress-dot"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="shared.js"></script>
+    <script src="onboarding-nav.js"></script>
+    <script>
+        // Execution frequency selection
+        document.querySelectorAll('.frequency-card').forEach(card => {
+            card.addEventListener('click', function() {
+                document.querySelectorAll('.frequency-card').forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+    </script>
+</body>
+</html>
