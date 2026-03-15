@@ -1293,7 +1293,7 @@ code, pre, .mono {
     flex-shrink: 0;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 0.25rem;
     overflow: hidden;
 }
 
@@ -1301,7 +1301,7 @@ code, pre, .mono {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: 0.25rem;
 }
 
 .update-content {
@@ -1439,7 +1439,7 @@ code, pre, .mono {
     flex-shrink: 0;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 0.25rem;
     overflow: hidden;
 }
 
@@ -2599,6 +2599,18 @@ code, pre, .mono {
     color: #ffffff;
     font-size: 1.5rem;
     font-weight: 700;
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    height: 5rem;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-text {
+    display: inline-block;
 }
 
 .landing-nav-links {
